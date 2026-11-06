@@ -4,7 +4,7 @@
 An interactive, offline 3D explorer of planetary orbits, the Sun's 230 km/s journey around
 Sagittarius A*, and the idea underneath it all: *every motion depends on what you measure it against.*
 
-**[▶ Live demo](https://your-username.github.io/earth-in-motion/)**
+**[▶ Live demo](https://yashaswyakella.github.io/earth-in-motion/)**
 
 <!-- Add a screenshot: save one as screenshot.png in the repo and uncomment -->
 <!-- ![Earth in Motion screenshot](screenshot.png) -->
