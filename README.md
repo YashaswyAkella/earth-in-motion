@@ -1,4 +1,4 @@
-# 🌍 Earth in Motion — A Moving Perspective
+# Earth in Motion Perspective
 
 **Earth has never been in the same place twice, if you measure against the galaxy.**
 An interactive, offline 3D explorer of planetary orbits, the Sun's 230 km/s journey around
