@@ -6,8 +6,6 @@ Sagittarius A*, and the idea underneath it all: *every motion depends on what yo
 
 https://yashaswyakella.github.io/earth-in-motion/
 
-<!-- Add a screenshot: save one as screenshot.png in the repo and uncomment -->
-<!-- ![Earth in Motion screenshot](screenshot.png) -->
 
 ## Features
 
