@@ -28,6 +28,11 @@ Plus:
 
 Open `index.html` in any modern browser. That's it.
 
+
+## New update 11/11/26
+
+This edition adds the Moon, Hubble, the James Webb Space Telescope (JWST), the Nancy Grace Roman Space Telescope, Voyager 1 and 2, and Pioneer 10 and 11. It preserves the original planetary, Milky Way, and Sagittarius A* views.
+
 Or serve it locally:
 ```bash
 python3 -m http.server 8000
