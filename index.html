@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#06080c">
-<meta name="description" content="An offline, interactive 3D exploration of the Moon, Hubble, Webb, Roman, Voyager, Pioneer, planetary orbits, the Sun's motion around Sagittarius A*, the Milky Way's structure, and why every speed depends on a reference frame.">
+<meta name="description" content="An offline, interactive 3D exploration of the Moon, ISS, Hubble, GPS, geostationary satellites, Webb, Roman, Parker Solar Probe, Voyager and Pioneer, planetary orbits, the Sun's motion around Sagittarius A*, and why every speed depends on a reference frame.">
 <meta property="og:title" content="Earth in Motion — A Moving Perspective">
-<meta property="og:description" content="Earth has never been in the same place twice — relative to the galaxy. Explore orbits, galactic motion, Sagittarius A*, and reference frames.">
+<meta property="og:description" content="Earth has never been in the same place twice — relative to the galaxy. Explore orbits, satellites, galactic motion, Sagittarius A*, and reference frames.">
 <meta property="og:type" content="website">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='13' fill='none' stroke='%23e9b765' stroke-width='1.5'/%3E%3Ccircle cx='16' cy='16' r='4' fill='%23e9b765'/%3E%3C/svg%3E">
 <title>Earth in Motion — A Moving Perspective</title>
@@ -135,6 +135,7 @@ select{font-family:var(--mono);font-size:10.5px;color:var(--ink);background:#0e1
 .persp-card p{font-size:13px;color:#b5ae9f;margin:0;line-height:1.55}
 .persp-card.hl .val,.persp-card.hl .frame{color:var(--amber)}
 .persp-card.bh .val{color:var(--rose)}
+.persp-card.sc .val{color:var(--cyan)}
 .elapsed{font-family:var(--mono);font-size:10.5px;color:var(--muted);margin:12px 0 0}
 .mini{font-family:var(--mono);font-size:10px;font-weight:400;letter-spacing:.18em;text-transform:uppercase;color:var(--amber);margin:36px 0 12px}
 .equiv{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
@@ -182,14 +183,14 @@ select{font-family:var(--mono);font-size:10.5px;color:var(--ink);background:#0e1
 @media(max-width:820px){.hero{display:block;padding:32px 0 24px}.hero-side{margin-top:24px}.explorer{grid-template-columns:1fr}.sidebar{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}.side-block+.side-block{border:0;padding-top:0}.side-block{min-width:0}.metric-readout{grid-column:1/-1;border-top:1px solid var(--line)!important;padding-top:14px!important}.stage{height:500px}.scene-header{display:flex}.scale-tag{margin:0}.camera-tools .home-view{display:block}.tabs{grid-template-columns:repeat(2,minmax(0,1fr))}.tab small{display:none}.section-head{grid-template-columns:1fr;gap:12px}.story{grid-template-columns:1fr;gap:28px}.persp-grid{grid-template-columns:1fr 1fr}.lifetime{grid-template-columns:1fr}.select-field{display:block}.select-field label{display:block;margin-bottom:4px}.select-field select{width:100%;max-width:none}}
 @media(max-width:560px){.shell{padding:18px 16px 28px}.offline{display:none}.top-actions{gap:0}h1{font-size:44px}.hero-intro{font-size:15px}.tab{font-size:15px;padding:10px 8px 10px 0}.stage{height:460px;min-height:390px}.scene-header{left:20px;right:16px;top:20px;display:block}.scene-title{font-size:18px}.scene-caption{font-size:11.5px;max-width:270px}.scale-tag{display:inline-block;margin-top:8px}.stage-bottom{left:20px;right:16px;bottom:16px;gap:10px}.hint{font-size:9px;max-width:190px}.camera-tools button{min-width:29px;height:29px}.transport{grid-template-columns:auto 1fr;gap:10px 14px;padding:12px 14px}.rate{grid-column:1/-1;display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--line);padding-top:8px}.rate label{margin:0}.sidebar{grid-template-columns:1fr 1fr;padding:16px;gap:18px 16px}.sidebar>.side-block:first-child{grid-column:1/-1}.persp-grid,.life-grid,.equiv{grid-template-columns:1fr 1fr}.persp-card .val{font-size:19px}.fc-table thead{display:none}.fc-table tr{display:block;border-bottom:1px solid var(--line);padding:10px 0}.fc-table td{display:block;border:0;padding:3px 2px;width:auto!important}.source-list{grid-template-columns:1fr}.footer{flex-direction:column;gap:6px}}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
-
-/* Companion explorer: same visual language, additional scale and frame controls. */
+/* Companion explorer */
 .tabs{grid-template-columns:repeat(5,minmax(0,1fr))}
 .companion-banner{display:flex;align-items:center;gap:18px;margin:0 0 16px;padding:15px 18px;border:1px solid var(--line2);background:linear-gradient(110deg,rgba(134,212,204,.055),rgba(233,183,101,.025));font-size:14px;color:var(--soft)}
 .companion-banner strong{color:var(--ink);font-weight:400;font-size:19px;white-space:nowrap}
 .companion-banner p{margin:0}.companion-banner .small-link{font-family:var(--mono);font-size:10px;color:var(--amber);margin-left:auto;white-space:nowrap}
 .craft-select{width:100%;max-width:none!important;font-size:11px;min-height:36px}
-.craft-frame{margin-bottom:12px}.craft-frame button{min-height:38px;font-size:10px;text-transform:none}
+.craft-frame{margin-bottom:12px}.craft-frame button{min-height:38px;font-size:9.5px;text-transform:none;padding:8px 2px}
+.craft-frame button:disabled{opacity:.3;cursor:not-allowed}
 .craft-note{font-size:12px;color:var(--muted);line-height:1.6;margin:10px 0 0}
 .craft-list{display:flex;flex-wrap:wrap;gap:6px 8px;padding:15px 0 3px}
 .craft-list .legend-label{width:100%;margin-bottom:3px}
@@ -203,7 +204,7 @@ select{font-family:var(--mono);font-size:10.5px;color:var(--ink);background:#0e1
 .motion-card .explanation{font-size:13px;line-height:1.6;color:var(--muted);margin:0;max-width:1000px}
 .mission-primer{margin:38px 0 0;padding-top:28px;border-top:1px solid var(--line2)}
 .mission-primer .section-head{margin-bottom:18px}
-.mission-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;border:1px solid var(--line);background:var(--line)}
+.mission-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;border:1px solid var(--line);background:var(--line)}
 .mission-grid article{padding:22px;background:var(--bg2)}
 .mission-grid h3{font-weight:400;font-size:22px;margin:6px 0 10px}
 .mission-grid p{font-size:13.5px;color:var(--soft);line-height:1.7;margin:0 0 16px}
@@ -214,20 +215,17 @@ select{font-family:var(--mono);font-size:10.5px;color:var(--ink);background:#0e1
 #companionControls .label{margin-top:0}
 @media(max-width:1100px){.tab{font-size:16px}.companion-banner{align-items:flex-start}.companion-banner strong{font-size:17px}}
 @media(max-width:820px){.tabs{grid-template-columns:repeat(3,minmax(0,1fr))}.companion-banner{flex-wrap:wrap;gap:4px 12px}.companion-banner .small-link{margin-left:0}.companion-banner p{flex:1;min-width:250px}.mission-grid{grid-template-columns:1fr}.mission-grid article{padding:18px}.companion-sidebar{grid-template-columns:1fr 1fr}.companion-sidebar>.side-block:first-child{grid-column:1/-1}.companion-sidebar .metric-readout{grid-column:1/-1}}
-@media(max-width:560px){.tabs{grid-template-columns:repeat(2,minmax(0,1fr))}.tab:last-child{grid-column:1/-1}.companion-banner{padding:13px 14px;font-size:13px}.companion-banner p{min-width:0;flex-basis:100%}.companion-sidebar{grid-template-columns:1fr}.companion-sidebar .side-block{grid-column:1/-1}.craft-chip{padding:8px 9px;font-size:10px}.motion-card{padding:14px}.motion-card .equation{font-size:11px}.frame-label{font-size:9px}.scene-header{pointer-events:none}}
-
+@media(max-width:560px){.tabs{grid-template-columns:repeat(2,minmax(0,1fr))}.tab:last-child{grid-column:1/-1}.companion-banner{padding:13px 14px;font-size:13px}.companion-banner p{min-width:0;flex-basis:100%}.companion-sidebar{grid-template-columns:1fr}.companion-sidebar .side-block{grid-column:1/-1}.craft-chip{padding:8px 9px;font-size:10px}.motion-card{padding:14px}.motion-card .equation{font-size:11px}.frame-label{font-size:9px}}
 </style>
 </head>
 <body>
 <div class="shell">
 <header class="topbar"><div class="brand"><div class="brand-mark" aria-hidden="true"></div><div>Earth in Motion<small>A moving perspective</small></div></div><div class="top-actions"><span class="offline">Self-contained · offline</span><a class="small-link" href="#science">About the model ↗</a></div></header>
-
 <section class="hero">
 <div class="hero-main"><p class="eyebrow">A small planet. A much bigger journey.</p><h1>Around the Sun.<br>Through the <em>galaxy.</em></h1></div>
-<aside class="hero-side"><p class="hero-intro">Earth completes an orbit while our whole Solar System moves onward around <strong>Sagittarius A*</strong>, the black hole at the heart of the Milky Way. Our Moon, space telescopes, and faraway probes share that bigger journey. Change the reference frame to see which motions stay together — and which paths escape.</p>
+<aside class="hero-side"><p class="hero-intro">Earth completes an orbit while our whole Solar System moves onward around <strong>Sagittarius A*</strong>, the black hole at the heart of the Milky Way. Our Moon, satellites, space telescopes and faraway probes share that bigger journey. Change the reference frame to see which motions stay together, and which paths escape.</p>
 <div class="live-panel"><p class="live-line">Since you opened this page, the Sun has carried you</p><div class="live-num"><strong id="liveKm">0</strong><small>KM</small></div><p class="live-sub">≈ <strong id="liveEq">0.0</strong> trips around Earth’s equator</p></div></aside>
 </section>
-
 <nav class="tabs" role="tablist" aria-label="Choose a reference frame">
 <button class="tab" id="tab-journey" role="tab" aria-selected="true" aria-controls="explorer-panel" data-scene="journey"><span>01</span>Through the galaxy<small>Galactic frame</small></button>
 <button class="tab" id="tab-solar" role="tab" aria-selected="false" aria-controls="explorer-panel" data-scene="solar" tabindex="-1"><span>02</span>Around the Sun<small>Solar frame</small></button>
@@ -235,9 +233,8 @@ select{font-family:var(--mono);font-size:10.5px;color:var(--ink);background:#0e1
 <button class="tab" id="tab-galaxy" role="tab" aria-selected="false" aria-controls="explorer-panel" data-scene="galaxy" tabindex="-1"><span>04</span>The Milky Way<small>230-million-year orbit</small></button>
 <button class="tab" id="tab-sgr" role="tab" aria-selected="false" aria-controls="explorer-panel" data-scene="sgr" tabindex="-1"><span>05</span>Sagittarius A*<small>Black-hole close-up</small></button>
 </nav>
-
 <main id="explorer-panel" role="tabpanel" aria-labelledby="tab-journey">
-<div class="companion-banner" id="companionBanner" hidden><strong>One journey. Different kinds of orbit.</strong><p>Choose an object, then switch between Earth, Sun, and Galaxy. Each view describes the same motion.</p><a class="small-link" href="#companion-primer">How it works ↓</a></div>
+<div class="companion-banner" id="companionBanner" hidden><strong>One journey. Different kinds of orbit.</strong><p>Choose an object, then switch between Ground, Earth, Sun and Galaxy. Each view describes the same motion.</p><a class="small-link" href="#companion-primer">How it works ↓</a></div>
 <div class="explorer">
 <section class="view" aria-label="Interactive simulation">
 <div class="stage" id="stage"><canvas id="universe" role="img" tabindex="0" aria-label="Interactive three dimensional model. Drag to rotate, pinch or use plus and minus to zoom. Arrow keys rotate the view." aria-describedby="canvasSummary">This model shows planetary orbits added to the Sun's motion through the galaxy.</canvas><div class="scene-header"><div><p class="frame-label" id="frameBadge" hidden></p><h2 class="scene-title" id="sceneTitle">Eight planets. One moving star.</h2><p class="scene-caption" id="sceneCaption">Trails in a local Galactic frame. Camera follows the Sun.</p></div><span class="scale-tag" id="scaleTag">Illustrative scale</span></div><div class="stage-bottom"><p class="hint" id="viewHint"><strong>Drag to rotate · pinch or scroll to zoom</strong><br>Bright trail: Earth · gold line: the Sun</p><div class="camera-tools" aria-label="Camera controls"><button id="zoomOut" aria-label="Zoom out">−</button><button id="zoomIn" aria-label="Zoom in">+</button><button id="homeView" class="home-view">Reset view</button></div></div></div>
@@ -245,13 +242,12 @@ select{font-family:var(--mono);font-size:10.5px;color:var(--ink);background:#0e1
 </section>
 <aside class="sidebar" aria-label="Explore the model">
 <section class="side-block"><p class="label" id="focusLabel">Planet in focus</p><div class="focus-title"><div class="planet-orb" id="planetOrb" aria-hidden="true"></div><div><h2 id="focusName">Earth</h2><div class="sub" id="focusSub">Our home, on the move</div></div></div><div class="facts"><div><div class="fact-value" id="factA">1.00 <small>yr</small></div><div class="fact-label" id="factALabel">orbital period</div></div><div><div class="fact-value" id="factB">1.00 <small>AU</small></div><div class="fact-label" id="factBLabel">semimajor axis</div></div></div><p class="side-copy" id="focusCopy">The highlighted trail combines Earth's orbit with the Sun's onward motion.</p></section>
-
 <section class="side-block" id="companionControls" hidden>
 <p class="label">Choose a companion</p>
 <label class="sr-only" for="craftSelect">Moon or spacecraft</label>
-<select class="craft-select" id="craftSelect"><optgroup label="Orbiting Earth"><option value="moon">Moon</option><option value="hubble">Hubble</option></optgroup><optgroup label="Near Sun–Earth L2"><option value="jwst">James Webb (JWST)</option><option value="roman">Nancy Grace Roman</option></optgroup><optgroup label="Escaping the Sun"><option value="voyager1">Voyager 1</option><option value="voyager2">Voyager 2</option><option value="pioneer10">Pioneer 10</option><option value="pioneer11">Pioneer 11</option></optgroup></select>
+<select class="craft-select" id="craftSelect"><optgroup label="Orbiting Earth"><option value="moon">Moon</option><option value="iss">International Space Station</option><option value="hubble">Hubble</option><option value="gps">GPS satellite</option><option value="geo">Geostationary satellite</option></optgroup><optgroup label="Near Sun–Earth L2"><option value="jwst">James Webb (JWST)</option><option value="roman">Nancy Grace Roman</option></optgroup><optgroup label="Around the Sun"><option value="parker">Parker Solar Probe</option></optgroup><optgroup label="Escaping the Sun"><option value="voyager1">Voyager 1</option><option value="voyager2">Voyager 2</option><option value="pioneer10">Pioneer 10</option><option value="pioneer11">Pioneer 11</option></optgroup></select>
 <p class="label" style="margin-top:18px">Measure motion from</p>
-<div class="segmented craft-frame" role="group" aria-label="Companion reference frame"><button data-craft-frame="earth" aria-pressed="false">Earth</button><button data-craft-frame="solar" aria-pressed="false">Sun</button><button data-craft-frame="galaxy" aria-pressed="true">Galaxy</button></div>
+<div class="segmented craft-frame" role="group" aria-label="Companion reference frame"><button data-craft-frame="ground" aria-pressed="false" title="Turns with Earth’s surface">Ground</button><button data-craft-frame="earth" aria-pressed="false" title="Earth’s centre, not rotating">Earth</button><button data-craft-frame="solar" aria-pressed="false">Sun</button><button data-craft-frame="galaxy" aria-pressed="true">Galaxy</button></div>
 <div class="toggle-row"><label><input id="craftTrails" type="checkbox" checked>Motion trails</label></div>
 <div class="toggle-row"><label><input id="craftGuides" type="checkbox" checked>Orbit guides</label></div>
 <div class="toggle-row"><label><input id="craftLabels" type="checkbox" checked>Object names</label></div>
@@ -268,29 +264,30 @@ select{font-family:var(--mono);font-size:10.5px;color:var(--ink);background:#0e1
 </aside>
 </div>
 <div class="planet-legend" id="planetLegend" aria-label="Choose a planet to highlight"><span class="legend-label">Highlight a planet</span></div>
-<div class="craft-list" id="craftLegend" aria-label="Choose a moon or spacecraft" hidden><span class="legend-label">Explore all eight companions</span></div>
+<div class="craft-list" id="craftLegend" aria-label="Choose a moon or spacecraft" hidden><span class="legend-label">Explore every companion</span></div>
 <p class="below-note" id="scaleFootnote">All body sizes enlarged. 1 AU ≈ 149.6 million km.</p>
 <div class="motion-card" id="motionCard" hidden><p class="label">How the motions combine</p><p class="equation" id="motionFormula"></p><p class="explanation" id="motionExplanation"></p></div>
 <p class="sr-only" id="canvasSummary">A schematic view of eight planetary orbits and their paths as the Sun moves through the galaxy.</p><div class="sr-only" role="status" aria-live="polite" id="status"></div>
 <noscript><div class="no-script">Enable JavaScript in your browser to run the animation. The explanations and sources below remain available.</div></noscript>
 </main>
-
-
 <section class="mission-primer" id="companion-primer" aria-labelledby="companionTitle">
-<div class="section-head"><div><p class="eyebrow">Our travelling companions</p><h2 id="companionTitle">They already share<br>our motion through space.</h2></div><p>A launch adds velocity to a spacecraft that is already moving with Earth. Gravity then shapes its path. These three families make the difference visible.</p></div>
+<div class="section-head"><div><p class="eyebrow">Our travelling companions</p><h2 id="companionTitle">They already share<br>our motion through space.</h2></div><p>A launch adds velocity to a spacecraft that is already moving with Earth. Gravity then shapes its path. These four families make the difference visible, and the “Ground” frame shows how each Earth satellite looks from where you stand.</p></div>
 <div class="mission-grid">
-<article><span class="label">01 · Around Earth</span><h3>The Moon &amp; Hubble</h3><p>A lunar lap takes about 27.3 days; Hubble needs about 95 minutes. Their local orbits are superimposed on Earth’s orbit around the Sun, and on the Sun’s journey through the Milky Way.</p><button data-demo="hubble">Resolve Hubble’s local orbit ↗</button></article>
-<article><span class="label">02 · Keeping pace with Earth</span><h3>Webb &amp; Roman</h3><p>Near L2, about 1.5 million km beyond Earth away from the Sun, the Sun’s and Earth’s combined gravity allow these telescopes to stay near Earth’s direction as they orbit the Sun. Station-keeping maintains their paths.</p><button data-demo="jwst">Explore the L2 neighbourhood ↗</button></article>
-<article><span class="label">03 · Escaping the Sun</span><h3>Voyager &amp; Pioneer</h3><p>These probes travel outward on unbound paths. Their separation from the Sun grows, but they retain the motion inherited from the Solar System. Crossing the heliopause is different from leaving the Oort Cloud or the galaxy.</p><button data-demo="voyager1">Follow the four escape paths ↗</button></article>
+<article><span class="label">01 · Around Earth</span><h3>Moon, ISS, Hubble, GPS &amp; geostationary</h3><p>Laps range from the ISS’s 93 minutes to the Moon’s 27.3 days. A geostationary satellite circles exactly once per sidereal day, so from the ground it seems to hang still, even though it is moving about 230 km/s through the galaxy.</p><button data-demo="geo" data-frame="ground">Watch a satellite stand still ↗</button></article>
+<article><span class="label">02 · Keeping pace with Earth</span><h3>Webb &amp; Roman</h3><p>Near L2, about 1.5 million km beyond Earth away from the Sun, the Sun’s and Earth’s combined gravity let these telescopes stay near Earth’s direction as they orbit the Sun. Station-keeping maintains their paths.</p><button data-demo="jwst">Explore the L2 neighbourhood ↗</button></article>
+<article><span class="label">03 · Diving at the Sun</span><h3>Parker Solar Probe</h3><p>Every 88 days Parker plunges to about 6.9 million km from the Sun’s centre, reaching ≈190 km/s relative to the Sun, faster than any spacecraft before it. Add the Sun’s own 230 km/s and even Parker never moves backward through the galaxy.</p><button data-demo="parker" data-frame="galaxy">See why Parker never moves backward ↗</button></article>
+<article><span class="label">04 · Escaping the Sun</span><h3>Voyager &amp; Pioneer</h3><p>These probes travel outward on unbound paths. Their separation from the Sun grows, but they keep the motion inherited from the Solar System. Crossing the heliopause is different from leaving the Oort Cloud or the galaxy.</p><button data-demo="voyager1">Follow the four escape paths ↗</button></article>
 </div>
 </section>
-
 <section class="perspectives" aria-labelledby="perspTitle">
 <div class="section-head"><div><p class="eyebrow">Perspective</p><h2 id="perspTitle">While you’ve been reading…</h2></div><p>Every counter below measures the same stretch of time, each against something different. None of them is <em>the</em> real speed. A speed only means something once you say what it’s measured against.</p></div>
 <div class="persp-grid">
 <article class="persp-card"><div class="frame">Spinning with Earth · at the equator</div><div class="val"><span id="pSpin">0</span><small>km</small></div><p>0.47 km/s. At 50° latitude it's about two-thirds of that. You don't feel it, because the ground, the air and you all move together.</p></article>
 <article class="persp-card"><div class="frame">Around the Sun</div><div class="val"><span id="pOrbit">0</span><small>km</small></div><p>29.8 km/s, roughly 30 times faster than a rifle bullet. One lap is about 940 million km.</p></article>
 <article class="persp-card hl"><div class="frame">Around Sagittarius A*</div><div class="val"><span id="pGal">0</span><small>km</small></div><p>≈230 km/s. The Sun carries all eight planets, the Moon and you along with it.</p></article>
+<article class="persp-card sc"><div class="frame">Aboard the ISS · around Earth</div><div class="val"><span id="pIss">0</span><small>km</small></div><p>≈7.66 km/s, about 16 orbits a day. The crew sees roughly 16 sunrises and 16 sunsets every 24 hours.</p></article>
+<article class="persp-card sc"><div class="frame">Parker Solar Probe · closest to the Sun</div><div class="val"><span id="pPsp">0</span><small>km</small></div><p>≈191.7 km/s relative to the Sun (December 2024), the fastest any human-made object has gone. The Sun’s own trip around the galaxy is still faster.</p></article>
+<article class="persp-card sc"><div class="frame">Voyager 1 · leaving the Sun</div><div class="val"><span id="pV1">0</span><small>km</small></div><p>≈17 km/s outward. More than 160 AU away, it is our most distant spacecraft; its radio signals take nearly a day to reach us.</p></article>
 <article class="persp-card"><div class="frame">Against the Big Bang’s afterglow</div><div class="val"><span id="pCmb">0</span><small>km</small></div><p>≈370 km/s relative to the cosmic microwave background (CMB), measured by the Planck satellite. It's the closest thing to a universal backdrop, but it's still a frame of reference, not "absolute space".</p></article>
 <article class="persp-card"><div class="frame">The whole Milky Way · against the CMB</div><div class="val"><span id="pMw">0</span><small>km</small></div><p>≈550 km/s. Our ≈230 km/s orbit points partly against the galaxy's motion, so the two add up to the Sun's ≈370. Velocities add as arrows, not just numbers.</p></article>
 <article class="persp-card"><div class="frame">Milky Way &amp; Andromeda</div><div class="val"><span id="pAnd">0</span><small>km closer</small></div><p>≈110 km/s. The two galaxies are closing in. Recent studies put the chance of a full merger within 10 billion years at roughly 50–50.</p></article>
@@ -320,9 +317,7 @@ select{font-family:var(--mono);font-size:10.5px;color:var(--ink);background:#0e1
 </div>
 </div>
 </section>
-
 <section class="story" aria-label="Understanding the journey"><article><div class="number">i.</div><h3>The same motion, different frames.</h3><p>Relative to the Sun, Earth follows a slightly elliptical orbit. Relative to the galaxy, that orbit is carried onward. <strong>Both descriptions are valid.</strong> There is no master grid that defines “the same point in space”.</p></article><article><div class="number">ii.</div><h3>A winding path, stretched by speed.</h3><p>At 230 km/s, the Sun advances about <strong>48.5 AU in one Earth year</strong>, more than 18,000 km every 80 seconds. Earth’s path through the galaxy is a gentle, stretched wave. It never loops backward.</p></article><article><div class="number">iii.</div><h3>One much longer year.</h3><p>A galactic orbit takes roughly <strong>230 million years</strong> (modern estimates run from about 210 to 240). Dividing the Solar System’s 4.6-billion-year age by that period gives about 20 laps. That's an estimate, not a counted history.</p></article></section>
-
 <section class="factcheck" aria-labelledby="fcTitle">
 <div class="section-head"><div><p class="eyebrow">Fact-check</p><h2 id="fcTitle">Checking the viral post</h2></div><p>The post that inspired this page gets the big idea right. Here is each claim, checked against published measurements.</p></div>
 <table class="fc-table">
@@ -342,37 +337,37 @@ select{font-family:var(--mono);font-size:10.5px;color:var(--ink);background:#0e1
 </tbody></table>
 <p class="fc-summary"><strong>The main idea:</strong> the numbers are mostly right and the main insight is sound. What the post leaves out is the deeper lesson: <em>motion is always relative to something</em>. Earth returns to the same place relative to the Sun every year, and never relative to the galaxy. Both statements are true at once.</p>
 </section>
-
 <details class="science" id="science"><summary>Read the science &amp; model notes <span>Reference frames, scales, assumptions, sources</span></summary><div class="science-content">
 <h3>What the animation means</h3><p>There is no universal, stationary grid defining “the same point in space.” Earth returns near the same position relative to the Sun after a year while the Solar System has advanced relative to the Milky Way. The Sun and planets share Galactic motion; gravity holds the planetary system together.</p><div class="formula">Planet's Galactic position = Sun's Galactic position + planet's position relative to the Sun</div>
-<h3>What is physical, and what is simplified</h3><ul><li><strong>Planetary motion:</strong> fixed Kepler ellipses from JPL's approximate J2000 elements. Perturbations, the Sun's wobble, and slow orbital evolution are omitted. This is not an ephemeris.</li><li><strong>Illustrative scale:</strong> each planet's orbit is rescaled so its displayed semimajor axis is √a (a in AU). Solar drift is 2 display units per year instead of 48.52 AU per year. Period ratios are preserved.</li><li><strong>Physical scale:</strong> orbital distances and solar displacement share one AU scale. Markers remain enlarged.</li><li><strong>Playback:</strong> views 01–02 default to 0.1 years per second (one Earth orbit ≈ 10 s), and motion eases in when a view opens.</li><li><strong>Local Galactic motion:</strong> a straight path at 230 km/s toward Galactic longitude 90° (toward Cygnus). The Sun's ≈18 km/s motion relative to its neighbours is omitted. In this frame Earth's speed swings between about 216 and 246 km/s over a year.</li><li><strong>Sky backdrop:</strong> the Milky Way band, Sgr A* (l = 0°), Andromeda (l = 121.2°, b = −21.6°), the Large Magellanic Cloud (l = 280.5°, b = −32.9°) and the Small Magellanic Cloud (l = 302.8°, b = −44.3°) are placed in their real Galactic directions.</li><li><strong>Milky Way view:</strong> a 230-Myr circular orbit (≈8.6 kpc at 230 km/s); a 64-Myr vertical oscillation of ≈78 pc, shown 15× taller and phased so the Sun is now ≈20 pc north and rising; and a radial epicycle of ≈300 pc with a ≈166-Myr period. The bar is oriented ≈27° from the Sun–centre line. The four arms follow a 13° pitch, placed so the Sun lies in the Orion Spur. Arms rotate rigidly (≈220 Myr per turn) and the bar faster (≈160 Myr); real pattern speeds are uncertain, and arms are density waves, not fixed groups of stars. Blue tracer stars follow a flat rotation curve, so inner stars lap the Sun. Time 0 is today.</li><li><strong>Sagittarius A* · stars:</strong> approximate published orbits (Gillessen et al. 2017; GRAVITY 2018–2020) at an assumed 8.28 kpc. S4714 (Peißker et al. 2020) is a disputed candidate. Speeds come from the vis-viva equation. The precession option uses the general-relativity value 6πGM/[c²a(1−e²)] per orbit (≈12′ for S2), multiplied by 40 so it can be seen.</li><li><strong>Sagittarius A* · horizon:</strong> a non-spinning black hole with 1 Rg = GM/c² ≈ 6.35 million km. It shows the event horizon (2 Rg), photon sphere (3 Rg), approximate shadow edge (≈5.2 Rg), innermost stable orbit (6 Rg) and a hot spot at 7 Rg. Orbit periods use Newtonian Kepler timing; light bending and Doppler beaming are not drawn.</li><li><strong>Perspective counters:</strong> Earth's spin 0.465 km/s; orbit 29.78 km/s; galactic 230 km/s; Sun vs CMB 369.8 km/s; Milky Way vs CMB ≈552 km/s; Andromeda approach ≈110 km/s; S2 pericentre ≈7,700 km/s; hot spot ≈0.38 c.</li></ul>
+<h3>What is physical, and what is simplified</h3><ul><li><strong>Planetary motion:</strong> fixed Kepler ellipses from JPL's approximate J2000 elements. Perturbations, the Sun's wobble, and slow orbital evolution are omitted. This is not an ephemeris.</li><li><strong>Illustrative scale:</strong> each planet's orbit is rescaled so its displayed semimajor axis is √a (a in AU). Solar drift is 2 display units per year instead of 48.52 AU per year. Period ratios are preserved.</li><li><strong>Physical scale:</strong> orbital distances and solar displacement share one AU scale. Markers remain enlarged.</li><li><strong>Playback:</strong> views 01–02 default to 0.1 years per second (one Earth orbit ≈ 10 s), and motion eases in when a view opens.</li><li><strong>Local Galactic motion:</strong> a straight path at 230 km/s toward Galactic longitude 90° (toward Cygnus). The Sun's ≈18 km/s motion relative to its neighbours is omitted. In this frame Earth's speed swings between about 216 and 246 km/s over a year.</li><li><strong>Sky backdrop:</strong> the Milky Way band, Sgr A* (l = 0°), Andromeda (l = 121.2°, b = −21.6°), the Large Magellanic Cloud (l = 280.5°, b = −32.9°) and the Small Magellanic Cloud (l = 302.8°, b = −44.3°) are placed in their real Galactic directions.</li><li><strong>Milky Way view:</strong> a 230-Myr circular orbit (≈8.6 kpc at 230 km/s); a 64-Myr vertical oscillation of ≈78 pc, shown 15× taller and phased so the Sun is now ≈20 pc north and rising; and a radial epicycle of ≈300 pc with a ≈166-Myr period. The bar is oriented ≈27° from the Sun–centre line. The four arms follow a 13° pitch, placed so the Sun lies in the Orion Spur. Arms rotate rigidly (≈220 Myr per turn) and the bar faster (≈160 Myr); real pattern speeds are uncertain, and arms are density waves, not fixed groups of stars. Blue tracer stars follow a flat rotation curve, so inner stars lap the Sun. Time 0 is today.</li><li><strong>Sagittarius A* · stars:</strong> approximate published orbits (Gillessen et al. 2017; GRAVITY 2018–2020) at an assumed 8.28 kpc. S4714 (Peißker et al. 2020) is a disputed candidate. Speeds come from the vis-viva equation. The precession option uses the general-relativity value 6πGM/[c²a(1−e²)] per orbit (≈12′ for S2), multiplied by 40 so it can be seen.</li><li><strong>Sagittarius A* · horizon:</strong> a non-spinning black hole with 1 Rg = GM/c² ≈ 6.35 million km. It shows the event horizon (2 Rg), photon sphere (3 Rg), approximate shadow edge (≈5.2 Rg), innermost stable orbit (6 Rg) and a hot spot at 7 Rg. Orbit periods use Newtonian Kepler timing; light bending and Doppler beaming are not drawn.</li><li><strong>Perspective counters:</strong> Earth's spin 0.465 km/s; orbit 29.78 km/s; galactic 230 km/s; ISS 7.66 km/s; Parker perihelion 191.7 km/s; Voyager 1 ≈17 km/s; Sun vs CMB 369.8 km/s; Milky Way vs CMB ≈552 km/s; Andromeda approach ≈110 km/s; S2 pericentre ≈7,700 km/s; hot spot ≈0.38 c.</li></ul>
 <h3>A clarification about “30 million years”</h3><p>A complete up-and-down oscillation and the interval between midplane crossings are different: there are two crossings per cycle. Estimates of the crossing interval cluster around 30–40 Myr depending on the assumed density of the disc. This explorer uses 64 Myr per full cycle (crossings every 32 Myr).</p>
-<h3>Sagittarius A* and the galactic centre</h3><p>Sagittarius A* is a black hole of about 4.3 million solar masses, ≈26,700 light-years away (8.18 kpc). Its mass was weighed using the very star orbits shown in view 04. The Sun's orbit is governed by the combined mass of the inner galaxy (stars, gas and dark matter); Sgr A* marks the centre but supplies only a tiny fraction of that pull at our distance. Seen from Earth, Sgr A* drifts about 6.4 milliarcseconds per year across the sky. That drift is the reflection of our own orbital motion.</p>
-
+<h3>Sagittarius A* and the galactic centre</h3><p>Sagittarius A* is a black hole of about 4.3 million solar masses, ≈26,700 light-years away (8.18 kpc). Its mass was weighed using the very star orbits shown in view 05. The Sun's orbit is governed by the combined mass of the inner galaxy (stars, gas and dark matter); Sgr A* marks the centre but supplies only a tiny fraction of that pull at our distance. Seen from Earth, Sgr A* drifts about 6.4 milliarcseconds per year across the sky. That drift is the reflection of our own orbital motion.</p>
 <h3>Moon &amp; spacecraft: what this addition calculates</h3>
-<p>The companion clock has an <strong>arbitrary starting phase, not a calendar epoch</strong>. All visible companions share the same elapsed time. Changing the reference frame preserves that time; choosing a different companion resets it. The model is self-contained and makes no telemetry requests.</p>
+<p>The companion clock has an <strong>illustrative starting phase, not a calendar epoch</strong>. All visible companions share the same elapsed time. Changing the reference frame preserves that time; choosing a different companion resets it. The model is self-contained and makes no telemetry requests.</p>
 <ul>
-<li><strong>Coordinates:</strong> physical positions are in AU and years, using the existing ecliptic-to-Galactic rotation. Earth-relative positions subtract Earth’s position at each sample time. Solar positions retain the local offsets. Galactic positions add the Sun’s straight-line 230 km/s motion; the camera translates with the present Sun without removing that motion from historical trails. These approximations apply to the short intervals shown, not millions of years.</li>
-<li><strong>Moon:</strong> fixed Kepler ellipse, 384,400 km semimajor axis, eccentricity 0.0549, inclination 5.145° to the ecliptic, period 27.3217 days. Initial node and phase are illustrative. Earth–Moon barycentric wobble, lunar precession, and perturbations are omitted.</li>
-<li><strong>Hubble:</strong> circular orbit at a rounded, fixed 500 km altitude, with an approximately 95-minute period and 28.5° inclination to the equator. Earth’s obliquity is applied before rotating into Galactic axes. This is not an orbital-elements tracker. In annual Sun/Galaxy views, playing shows an orbit envelope and the mean Earth-following trail to avoid falsely animating thousands of undersampled revolutions. Pause for a snapshot; use Earth view for individual laps. Earth’s radius is to scale in the Hubble close-up.</li>
-<li><strong>L2 telescopes:</strong> the L2 reference is placed 1.5 million km beyond Earth along the Sun–Earth direction. Analytic loops in that rotating basis illustrate the halo geometry: 168 days for Webb, and an adopted 180-day loop for Roman. Dimensions, phases and Roman’s period are illustrative, not numerical restricted-three-body solutions. Guide rings freeze the current Sun–Earth direction; trails record the changing direction. Roman shows its destination orbit, not its transfer, commissioning, or present location.</li>
-<li><strong>Escaping probes:</strong> all start at an intentionally chosen 100 AU radius, with rounded constant Sun-relative speeds of 17, 15, 12, and 11.4 km/s for Voyager 1, Voyager 2, Pioneer 10, and Pioneer 11. These are generic coasting segments, not four simultaneous real state vectors. Voyager departure latitudes are represented at approximately +35° and −48°; other directions are schematic. Solar deceleration, planetary encounters and long-term Galactic curvature are omitted. These probes are escaping the Sun; they are not shown escaping the Milky Way.</li>
-<li><strong>Teaching scale:</strong> in Sun/Galaxy views, Earth-relative offsets are enlarged ×65 for the Moon, ×3500 for Hubble and ×14 for the whole L2 neighbourhood. Galactic forward travel is reduced by a factor of about 24.3 for these nearby-object demonstrations. Probe distances and travel always share one AU scale. Physical-distance mode removes every distance exaggeration, but keeps icons enlarged. All numerical distance and speed readouts are computed from physical coordinates.</li>
+<li><strong>Four frames:</strong> <em>Ground</em> subtracts Earth’s position and then rotates the axes back by Earth’s spin angle (one turn per sidereal day, 23 h 56 min), so points on Earth’s surface stay fixed. <em>Earth</em> subtracts Earth’s position but keeps non-rotating axes. <em>Sun</em> uses heliocentric positions. <em>Galaxy</em> adds the Sun’s straight-line 230 km/s motion; the camera follows the present Sun without removing that motion from past trails.</li>
+<li><strong>Orientation:</strong> equatorial orbits are rotated into the ecliptic using Earth’s 23.44° obliquity, then into Galactic axes.</li>
+<li><strong>Moon:</strong> fixed Kepler ellipse, 384,400 km semimajor axis, eccentricity 0.0549, inclination 5.145° to the ecliptic, period 27.3217 days. Node and phase are illustrative; barycentric wobble, precession and perturbations are omitted.</li>
+<li><strong>Circular Earth orbits:</strong> ISS at a rounded 420 km altitude, 51.64° inclination, 92.7-minute period; Hubble at 500 km, 28.5°, 95 minutes; one GPS satellite at 26,560 km radius, 55°, 717.97 minutes (half a sidereal day); a geostationary satellite at 42,164 km radius, 0°, 1,436.07 minutes (one sidereal day). Altitudes are held fixed; drag, reboosts and node drift are omitted; node and phase are illustrative. In annual Sun/Galaxy views, playing shows an envelope and Earth’s trail to avoid falsely animating thousands of undersampled laps. Earth’s radius is to scale in the Ground and Earth close-ups.</li>
+<li><strong>L2 telescopes:</strong> L2 is placed 1.5 million km beyond Earth along the Sun–Earth line. Analytic loops illustrate the halo geometry: 168 days for Webb and an adopted 180-day loop for Roman. Dimensions, phases and Roman’s period are illustrative, not restricted-three-body solutions. Roman shows its destination orbit, not its transfer, commissioning or present location.</li>
+<li><strong>Parker Solar Probe:</strong> fixed ellipse matching its post-2024 orbit: perihelion 0.0459 AU (≈9.86 solar radii, ≈6.9 million km from the Sun’s centre), aphelion ≈0.73 AU, period ≈88 days. Vis-viva gives ≈191 km/s at perihelion. Plane and phase are illustrative; earlier Venus flybys are not replayed. Its Galactic drift uses the true 230 km/s.</li>
+<li><strong>Escaping probes:</strong> all start at a chosen 100 AU radius, with rounded constant Sun-relative speeds of 17, 15, 12 and 11.4 km/s for Voyager 1, Voyager 2, Pioneer 10 and Pioneer 11. Departure directions are approximate; solar deceleration and planetary encounters are omitted. These probes are escaping the Sun, not the Milky Way.</li>
+<li><strong>Teaching scale:</strong> in Sun/Galaxy views, Earth-relative offsets are enlarged ×65 for the Moon, ×3500 for the ISS and Hubble, ×900 for GPS, ×570 for geostationary and ×14 for the L2 neighbourhood, and Galactic forward travel is reduced ×24.3. Physical-distance mode removes all distance exaggeration. All numerical readouts use physical coordinates.</li>
 </ul>
 <h3>Companion sources</h3>
 <ul class="source-list">
 <li><a href="https://ntrs.nasa.gov/api/citations/20140003573/downloads/20140003573.pdf" target="_blank" rel="noopener noreferrer">NASA · Moon facts</a><br>Distance, period, eccentricity and inclination.</li>
+<li><a href="https://www.nasa.gov/international-space-station/space-station-facts-and-figures/" target="_blank" rel="noopener noreferrer">NASA · Space station facts and figures</a><br>ISS altitude, speed and orbits per day.</li>
 <li><a href="https://science.nasa.gov/mission/hubble/overview/about-hubble/" target="_blank" rel="noopener noreferrer">NASA · About Hubble</a><br>Approximate orbit and equatorial inclination.</li>
-<li><a href="https://science.nasa.gov/asset/webb/webbs-orbit-at-sun-earth-lagrange-point-2-l2/" target="_blank" rel="noopener noreferrer">NASA / STScI · Webb at L2</a><br>L2 distance and 168-day halo circuit.</li>
+<li><a href="https://www.gps.gov/systems/gps/space/" target="_blank" rel="noopener noreferrer">GPS.gov · Space segment</a><br>Orbit altitude, two orbits per day, constellation size.</li>
+<li><a href="https://link.springer.com/article/10.12942/lrr-2003-1" target="_blank" rel="noopener noreferrer">Ashby (2003) · Relativity in GPS</a><br>The +38 µs/day clock correction.</li>
+<li><a href="https://science.nasa.gov/asset/webb/webbs-orbit-at-sun-earth-lagrange-point-2-l2/" target="_blank" rel="noopener noreferrer">NASA / STScI · Webb at L2</a><br>L2 distance and halo circuit.</li>
 <li><a href="https://science.nasa.gov/missions/roman-space-telescope/roman-commissioning/" target="_blank" rel="noopener noreferrer">NASA · Roman’s destination orbit</a><br>Transfer and L2 halo-orbit explanation.</li>
-<li><a href="https://science.nasa.gov/mission/roman-space-telescope/frequently-asked-questions/" target="_blank" rel="noopener noreferrer">NASA · Roman questions</a><br>Quasi-halo operation around Sun–Earth L2.</li>
-<li><a href="https://science.nasa.gov/mission/voyager/fact-sheet/" target="_blank" rel="noopener noreferrer">NASA · Voyager trajectories</a><br>Departure geometry and approximate escape rates; historical mission text.</li>
-<li><a href="https://science.nasa.gov/missions/voyager-program/10-things-going-interstellar/" target="_blank" rel="noopener noreferrer">NASA · Going interstellar</a><br>Heliopause, Oort Cloud, and continuing Galactic motion.</li>
-<li><a href="https://science.nasa.gov/missions/pioneer-10-update/" target="_blank" rel="noopener noreferrer">NASA · Pioneer 10 historical update</a><br>Historical Sun-relative speed near 12 km/s; no present-day tracking implied.</li>
+<li><a href="https://science.nasa.gov/mission/parker-solar-probe/" target="_blank" rel="noopener noreferrer">NASA · Parker Solar Probe</a><br>Perihelion distance, speed record and orbit.</li>
+<li><a href="https://science.nasa.gov/mission/voyager/fact-sheet/" target="_blank" rel="noopener noreferrer">NASA · Voyager trajectories</a><br>Departure geometry and approximate escape rates.</li>
+<li><a href="https://science.nasa.gov/missions/voyager-program/10-things-going-interstellar/" target="_blank" rel="noopener noreferrer">NASA · Going interstellar</a><br>Heliopause, Oort Cloud and continuing Galactic motion.</li>
 <li><a href="https://science.nasa.gov/missions/pioneer/pioneer-11/10-things-about-pioneer-spacecraft/" target="_blank" rel="noopener noreferrer">NASA · Pioneer spacecraft</a><br>Escape paths and loss of contact.</li>
-<li><a href="https://science.nasa.gov/mission/pioneer-11/" target="_blank" rel="noopener noreferrer">NASA · Pioneer 11 mission history</a><br>Encounters and final communications.</li>
 </ul>
-
 <h3>Original model: sources &amp; further reading</h3><ul class="source-list"><li><a href="https://science.nasa.gov/solar-system/solar-system-facts/" target="_blank" rel="noopener noreferrer">NASA · Solar System facts</a><br>Galactic speed, period, age, and AU.</li><li><a href="https://ssd.jpl.nasa.gov/planets/approx_pos.html" target="_blank" rel="noopener noreferrer">NASA JPL · Approximate planetary positions</a><br>Kepler equations and J2000 elements.</li><li><a href="https://gea.esac.esa.int/archive/documentation/GEDR3/Introduction/chap_cu0int/cu0int_sec_mission/cu0int_ssec_scanning_law_concepts.html" target="_blank" rel="noopener noreferrer">ESA Gaia · Ecliptic and Galactic coordinates</a><br>The relationship between the two planes.</li><li><a href="https://arxiv.org/abs/1904.05721" target="_blank" rel="noopener noreferrer">GRAVITY Collaboration (2019)</a><br>Distance to the Galactic centre.</li><li><a href="https://arxiv.org/abs/1809.03507" target="_blank" rel="noopener noreferrer">Bennett &amp; Bovy (2019)</a><br>The Sun's height above the midplane.</li><li><a href="https://arxiv.org/abs/0912.3693" target="_blank" rel="noopener noreferrer">Schönrich, Binney &amp; Dehnen (2010)</a><br>The Sun's motion relative to nearby stars.</li><li><a href="https://arxiv.org/abs/1602.07702" target="_blank" rel="noopener noreferrer">Bland-Hawthorn &amp; Gerhard (2016)</a><br>The Milky Way's bar, disc and rotation.</li><li><a href="https://arxiv.org/abs/1910.03357" target="_blank" rel="noopener noreferrer">Reid et al. (2019)</a><br>Spiral arms mapped with masers.</li><li><a href="https://www.nature.com/articles/314073a0" target="_blank" rel="noopener noreferrer">Thaddeus &amp; Chanan (1985)</a><br>Vertical half-period.</li><li><a href="https://academic.oup.com/mnras/article/483/3/3971/5234256" target="_blank" rel="noopener noreferrer">Feng &amp; Jones (2019)</a><br>Uncertainty in the Sun's trajectory.</li><li><a href="https://arxiv.org/abs/1807.06205" target="_blank" rel="noopener noreferrer">Planck Collaboration (2018)</a><br>Our motion relative to the CMB.</li><li><a href="https://arxiv.org/abs/1205.6864" target="_blank" rel="noopener noreferrer">van der Marel et al. (2012)</a><br>Andromeda's approach velocity.</li><li><a href="https://eventhorizontelescope.org/blog/astronomers-reveal-first-image-black-hole-heart-our-galaxy" target="_blank" rel="noopener noreferrer">Event Horizon Telescope (2022)</a><br>First image of Sagittarius A*.</li><li><a href="https://doi.org/10.3847/1538-4357/aa5c41" target="_blank" rel="noopener noreferrer">Gillessen et al. (2017)</a><br>Orbits of the S-stars.</li><li><a href="https://doi.org/10.1051/0004-6361/201833718" target="_blank" rel="noopener noreferrer">GRAVITY Collaboration (2018)</a><br>S2’s 2018 closest pass.</li><li><a href="https://arxiv.org/abs/1810.12641" target="_blank" rel="noopener noreferrer">GRAVITY Collaboration (2018b)</a><br>Hot spots orbiting near the innermost stable orbit.</li><li><a href="https://arxiv.org/abs/2004.07187" target="_blank" rel="noopener noreferrer">GRAVITY Collaboration (2020)</a><br>Schwarzschild precession of S2.</li><li><a href="https://ui.adsabs.harvard.edu/abs/2020ApJ...899...50P" target="_blank" rel="noopener noreferrer">Peißker et al. (2020)</a><br>Faint fast stars, including S4714.</li><li><a href="https://arxiv.org/abs/2001.04386" target="_blank" rel="noopener noreferrer">Reid &amp; Brunthaler (2020)</a><br>The apparent motion of Sgr A* across the sky.</li></ul><p>Inspired by a <a href="https://x.com/philosophyofphy/status/2117158973141033265" target="_blank" rel="noopener noreferrer">post on X</a>, fact-checked above.</p><h3>Controls</h3><p>Drag with a mouse or one finger to rotate; scroll, pinch, or use +/− to zoom. With the canvas focused, use arrow keys to rotate, +/− to zoom, and R to reset the view. Space pauses or resumes outside form controls. The timeline pauses playback when moved. Reduced-motion preferences start the animation paused.</p>
 </div></details>
 <footer class="footer"><span><strong>Earth in Motion</strong> · An exploration of perspective</span><span>Made to explore. Built to work offline.</span></footer>
@@ -443,48 +438,86 @@ select{font-family:var(--mono);font-size:10.5px;color:var(--ink);background:#0e1
 </script>
 <script>
 /* Companion positions use AU and Julian years in the original Galactic axes.
-   These are teaching models with arbitrary phases, not mission ephemerides. */
+   Teaching models with illustrative phases, not mission ephemerides. */
 (() => {
   'use strict';
-  const M = window.OrbitalModel, AU = M.AU_KM, Y = 365.25, TAU = 2*Math.PI, D = Math.PI/180;
+  const M = window.OrbitalModel, AU = M.AU_KM, Y = 365.25, TAU = 2*Math.PI, D = Math.PI/180, MIN = 1/(1440*Y);
   const earth = M.PLANETS.find(p => p.id === 'earth');
   const add = (a,b) => a.map((v,i) => v+b[i]);
   const mul = (a,s) => a.map(v => v*s);
   const norm = a => Math.hypot(...a);
+  const dot3 = (a,b) => a[0]*b[0]+a[1]*b[1]+a[2]*b[2];
   const cross = (a,b) => [a[1]*b[2]-a[2]*b[1],a[2]*b[0]-a[0]*b[2],a[0]*b[1]-a[1]*b[0]];
-  const normal = M.toGalactic([0,0,1]);
-  const H = {a:(6371+500)/AU,e:0,i:28.5,L:0,peri:0,node:0,period:95/(1440*Y)};
+  const normal = M.toGalactic([0,0,1]); // ecliptic pole
+  // Equatorial -> ecliptic (obliquity 23.44°): y' = y cosε + z sinε, z' = −y sinε + z cosε. Then -> Galactic.
+  const EPS = 23.43928*D, cE = Math.cos(EPS), sE = Math.sin(EPS);
+  const eqToGal = v => M.toGalactic([v[0], v[1]*cE + v[2]*sE, -v[1]*sE + v[2]*cE]);
+  const SPIN_AXIS = eqToGal([0,0,1]), EQ_U = eqToGal([1,0,0]), EQ_V = eqToGal([0,1,0]);
+  const SIDEREAL_DAY_YR = 0.99726958/Y, RE_AU = 6371/AU;
+  function rotateAbout(v,k,a){const c=Math.cos(a),s=Math.sin(a),kv=cross(k,v),kd=dot3(k,v)*(1-c);return [v[0]*c+kv[0]*s+k[0]*kd,v[1]*c+kv[1]*s+k[1]*kd,v[2]*c+kv[2]*s+k[2]*kd];}
+  const groundRotate = (v,t) => rotateAbout(v,SPIN_AXIS,-TAU*t/SIDEREAL_DAY_YR);
+  const equatorPoint = (t,ground) => {const th=ground?0:TAU*t/SIDEREAL_DAY_YR;return add(mul(EQ_U,Math.cos(th)),mul(EQ_V,Math.sin(th)));};
   const moon = {a:384400/AU,e:.0549,i:5.145,L:65,peri:30,node:40,period:27.3217/Y};
+  // Parker Solar Probe after its final Venus flyby: q = 0.0459 AU, Q ≈ 0.73 AU, P ≈ 88 days.
+  const parkerOrbit = {a:.388,e:.8817,i:3.4,L:20,peri:200,node:76,period:.2416};
   const craft = [
-    {id:'moon',name:'Moon',long:'The Moon',group:'bound',color:'#d6deed',period:moon.period,zoom:65,
+    {id:'moon',name:'Moon',long:'The Moon',group:'bound',color:'#d6deed',period:moon.period,zoom:65,view:493000,gh:3/Y,
+     title:'A moon around a moving world.',
      sub:'Earth’s natural satellite',a:'27.32',au:'days',al:'sidereal orbit',b:'384,400',bu:'km',bl:'mean Earth distance',
      copy:'The Moon orbits Earth while both orbit the Sun. Add the Sun’s Galactic motion and the lunar orbit becomes a small ripple inside a much longer journey.',
-     note:'Its 27.32-day orbit is measured against distant stars. The cycle of phases takes about 29.53 days.'},
-    {id:'hubble',name:'Hubble',long:'Hubble Space Telescope',group:'bound',color:'#a5c8ff',period:H.period,zoom:3500,
+     note:'Its 27.32-day orbit is measured against distant stars; the cycle of phases takes about 29.53 days. In the “Ground” frame it seems to circle once a day: that is Earth turning, which is why the Moon rises and sets.'},
+    {id:'iss',name:'ISS',long:'International Space Station',group:'bound',circ:true,color:'#f2e6c9',r:(6371+420)/AU,inc:51.64,node:30,ph:1.1,period:92.68*MIN,zoom:3500,view:9000,gh:.4/Y,rates:[[2,5,10,20],'min',10],stepMin:15,
+     title:'Sixteen orbits a day, inside a much bigger journey.',
+     sub:'A crewed laboratory in low Earth orbit',a:'≈92.7',au:'min',al:'Earth orbit',b:'≈420',bu:'km',bl:'typical altitude',
+     copy:'The ISS circles Earth about 16 times a day at roughly 7.7 km/s. Its crew is falling around Earth while also riding with Earth around the Sun, and with the Sun around the galaxy.',
+     note:'Switch to “Ground” to see why each pass crosses a different part of the world: Earth turns beneath the orbit. Altitude is rounded and held fixed; the real station drifts lower with drag and is periodically reboosted.'},
+    {id:'hubble',name:'Hubble',long:'Hubble Space Telescope',group:'bound',circ:true,color:'#a5c8ff',r:(6371+500)/AU,inc:28.5,node:0,ph:0,period:95*MIN,zoom:3500,view:9000,gh:.4/Y,rates:[[2,5,10,20],'min',10],stepMin:15,
+     title:'A 95-minute orbit inside a much bigger journey.',
      sub:'A telescope in low Earth orbit',a:'≈95',au:'min',al:'Earth orbit',b:'≈500',bu:'km',bl:'model altitude',
      copy:'Hubble circles Earth roughly every 95 minutes. It already shares Earth’s motion around the Sun and the Sun’s motion through the galaxy; it does not need to chase them.',
-     note:'Earth view resolves each lap. Annual views show the rapid orbit as an envelope while playing; pause to see an instantaneous position. Altitude is rounded and held fixed.'},
+     note:'Earth view resolves each lap; “Ground” shows Earth turning beneath it. Annual views show the rapid orbit as an envelope while playing; pause to see an instantaneous position. Altitude is rounded and held fixed.'},
+    {id:'gps',name:'GPS',long:'GPS navigation satellite',group:'bound',circ:true,color:'#9fe0a8',r:26560/AU,inc:55,node:100,ph:.4,period:717.97*MIN,zoom:900,view:32000,gh:SIDEREAL_DAY_YR,rates:[[10,30,60,120],'min',30],stepMin:60,
+     title:'Two laps a day, one repeating ground track.',
+     sub:'Medium Earth orbit · two laps per sidereal day',a:'≈11.97',au:'hr',al:'orbit (½ sidereal day)',b:'≈20,200',bu:'km',bl:'altitude',
+     copy:'Each GPS satellite completes exactly two orbits per sidereal day, so its track over the ground repeats every day. Your phone works out where you are by timing signals from several of them.',
+     note:'GPS clocks must be corrected for relativity: about +45 µs/day from weaker gravity and −7 µs/day from orbital speed, a net +38 µs/day. One satellite of the roughly 31-satellite constellation is shown.'},
+    {id:'geo',name:'Geostationary',long:'Geostationary satellite',group:'bound',circ:true,color:'#f3a8b5',r:42164/AU,inc:0,node:0,ph:0,period:1436.07*MIN,zoom:570,view:50000,gh:SIDEREAL_DAY_YR,rates:[[30,60,120,240],'min',60],stepMin:120,
+     title:'Standing still? Only from the ground.',
+     sub:'Fixed above one spot on the equator',a:'23h 56m',au:'',al:'orbit = one sidereal day',b:'35,786',bu:'km',bl:'altitude',
+     copy:'A geostationary satellite orbits once per sidereal day above the equator, so from the ground it seems to hang still. That is why a satellite dish can point at one fixed spot in the sky.',
+     note:'In the “Ground” frame it stands still. In every other frame it moves: about 3.07 km/s around Earth, ≈30 km/s around the Sun and ≈230 km/s through the galaxy. “Stationary” depends on the frame.'},
     {id:'jwst',name:'JWST',long:'James Webb Space Telescope',group:'l2',color:'#f0c674',period:168/Y,zoom:14,
+     title:'A solar orbit, keeping pace with Earth.',
      sub:'A halo orbit near Sun–Earth L2',a:'≈168',au:'days',al:'halo circuit',b:'≈1.5M',bu:'km',bl:'Earth to L2',
      copy:'Webb travels around the Sun in step with Earth, looping around the L2 region on Earth’s night side. L2 is a location in the rotating Sun–Earth system, not a solid object.',
      note:'Sun and Earth both contribute gravity. Small station-keeping burns maintain the orbit. The halo’s shape and phase here are illustrative.'},
     {id:'roman',name:'Roman',long:'Nancy Grace Roman Space Telescope',group:'l2',color:'#d4a9ff',period:180/Y,zoom:14,
+     title:'A solar orbit, keeping pace with Earth.',
      sub:'Its destination orbit near L2',a:'L2',au:'',al:'destination region',b:'≈1.5M',bu:'km',bl:'Earth to L2',
      copy:'Roman’s destination is a quasi-halo orbit near Sun–Earth L2. Like Webb, it travels around the Sun with Earth while moving around the L2 region.',
      note:'Destination-orbit demonstration, not live tracking. Transfer and commissioning are omitted. A 180-day loop is adopted for illustration, not a claimed mission ephemeris.'},
+    {id:'parker',name:'Parker',long:'Parker Solar Probe',group:'helio',color:'#ffb066',period:parkerOrbit.period,orbit:parkerOrbit,
+     title:'Diving at the Sun. Still carried by it.',
+     sub:'The fastest spacecraft ever built',a:'≈191.7',au:'km/s',al:'record speed (Dec 2024)',b:'6.9M',bu:'km',bl:'closest to Sun’s centre',
+     copy:'Parker swoops to within about 6.9 million km of the Sun’s centre every 88 days, reaching ≈190 km/s relative to the Sun. Yet in the Galactic frame it never moves backward: the Sun’s own 230 km/s is faster.',
+     note:'Orbit after the final Venus flyby (November 2024): perihelion ≈9.86 solar radii, aphelion ≈0.73 AU near Venus’s orbit. Plane and phase are illustrative; speeds come from the vis-viva equation.'},
     {id:'voyager1',name:'Voyager 1',long:'Voyager 1',group:'probe',color:'#eea284',speed:17,lon:255,lat:35,
+     title:'Leaving the Sun. Still moving with the galaxy.',
      sub:'An outward journey above the ecliptic',a:'≈17',au:'km/s',al:'adopted Sun-relative speed',b:'Unbound',bu:'',bl:'to the Sun',
      copy:'Voyager 1 is escaping the Sun, on a trajectory north of the planetary plane. Its Galactic velocity still includes the motion it inherited from the Solar System.',
      note:'Voyager 1 crossed the heliopause in 2012. Interstellar plasma begins there; the much larger Oort Cloud still lies ahead.'},
     {id:'voyager2',name:'Voyager 2',long:'Voyager 2',group:'probe',color:'#88c7f2',speed:15,lon:290,lat:-48,
+     title:'Leaving the Sun. Still moving with the galaxy.',
      sub:'An outward journey below the ecliptic',a:'≈15',au:'km/s',al:'adopted Sun-relative speed',b:'Unbound',bu:'',bl:'to the Sun',
      copy:'Voyager 2’s Neptune flyby sent it south of the planetary plane. It is moving away from the Sun, while sharing most of the Solar System’s much faster Galactic motion.',
      note:'Voyager 2 crossed the heliopause in 2018. Neither Voyager is escaping the Milky Way in this model.'},
     {id:'pioneer10',name:'Pioneer 10',long:'Pioneer 10',group:'probe',color:'#b7d9a5',speed:12,lon:80,lat:3,
+     title:'Leaving the Sun. Still moving with the galaxy.',
      sub:'A silent probe on an escape path',a:'≈12',au:'km/s',al:'adopted coasting speed',b:'2003',bu:'',bl:'last signal',
      copy:'Pioneer 10 is on an escape trajectory broadly toward Taurus. Losing radio contact did not stop its motion: it continues under gravity, carrying its inherited Galactic velocity.',
      note:'No live telemetry. This is a generic outbound segment, with a rounded speed and schematic direction, not a present position.'},
     {id:'pioneer11',name:'Pioneer 11',long:'Pioneer 11',group:'probe',color:'#e1aacf',speed:11.4,lon:285,lat:15,
+     title:'Leaving the Sun. Still moving with the galaxy.',
      sub:'A second silent traveller',a:'≈11.4',au:'km/s',al:'adopted coasting speed',b:'1995',bu:'',bl:'last contact year',
      copy:'Pioneer 11 used Jupiter and Saturn encounters to reach an escape path broadly toward Aquila. It is no longer Earth-bound, but remains part of the galaxy’s moving population.',
      note:'Planetary flybys are not replayed here. All four probe demonstrations begin at a chosen 100 AU radius, not at their current locations.'}
@@ -498,17 +531,23 @@ select{font-family:var(--mono);font-size:10.5px;color:var(--ink);background:#0e1
     const r=c.id==='jwst'?110000:150000, a=c.id==='jwst'?600000:720000, b=c.id==='jwst'?280000:360000;
     return add(l2Offset(t),add(mul(u,r*Math.cos(2*p)/AU),add(mul(v,a*Math.cos(p)/AU),mul(normal,b*Math.sin(p)/AU))));
   }
+  // Circular orbit defined in Earth's equatorial frame, then rotated into Galactic axes.
+  function circOffset(c,t){
+    const p=TAU*t/c.period+(c.ph||0), i=c.inc*D, n=(c.node||0)*D;
+    const x=c.r*Math.cos(p), y=c.r*Math.sin(p)*Math.cos(i), z=c.r*Math.sin(p)*Math.sin(i);
+    return eqToGal([x*Math.cos(n)-y*Math.sin(n), x*Math.sin(n)+y*Math.cos(n), z]);
+  }
+  function normalOf(c){
+    if(!c||!c.circ)return normal;
+    const i=c.inc*D,n=(c.node||0)*D;
+    return eqToGal([Math.sin(i)*Math.sin(n),-Math.sin(i)*Math.cos(n),Math.cos(i)]);
+  }
   function offset(id,t) {
     const c=byId[id];
     if(id==='moon') return M.positionAU(moon,t);
-    if(id==='hubble') {
-      // Orbit inclined 28.5 degrees to the equator, then equator tilted to ecliptic.
-      const p=TAU*t/H.period, i=H.i*D, e=23.43928*D;
-      const x=H.a*Math.cos(p),y=H.a*Math.sin(p)*Math.cos(i),z=H.a*Math.sin(p)*Math.sin(i);
-      return M.toGalactic([x,y*Math.cos(e)-z*Math.sin(e),y*Math.sin(e)+z*Math.cos(e)]);
-    }
-    if(c.group==='l2') return haloOffset(c,t);
-    throw new Error('An escaping probe has no Earth-bound local orbit.');
+    if(c&&c.circ) return circOffset(c,t);
+    if(c&&c.group==='l2') return haloOffset(c,t);
+    throw new Error('This object has no Earth-bound local orbit.');
   }
   function heliocentric(id,t) {
     if(id==='earth')return earthAt(t);
@@ -516,25 +555,25 @@ select{font-family:var(--mono);font-size:10.5px;color:var(--ink);background:#0e1
     if(id==='l2')return add(earthAt(t),l2Offset(t));
     const c=byId[id];
     if(!c)throw new Error('Unknown companion '+id);
+    if(c.group==='helio')return M.positionAU(c.orbit,t);
     if(c.group!=='probe')return add(earthAt(t),offset(id,t));
     // Chosen starting radius, approximate direction, constant outbound velocity.
-    // No launch, gravity assists, solar deceleration or present-day state vector.
     const r=100+c.speed*M.SEC_PER_YEAR/AU*t,lon=c.lon*D,lat=c.lat*D;
     return M.toGalactic([r*Math.cos(lat)*Math.cos(lon),r*Math.cos(lat)*Math.sin(lon),r*Math.sin(lat)]);
   }
   function position(id,t,frame='solar') {
     const p=heliocentric(id,t);
     if(frame==='earth')return add(p,mul(earthAt(t),-1));
+    if(frame==='ground')return groundRotate(add(p,mul(earthAt(t),-1)),t);
     if(frame==='galaxy')return add(p,[0,M.SUN_AU_PER_YEAR*t,0]);
     return p;
   }
   function velocity(id,t,frame) {
-    const dt=id==='hubble'?H.period/2000:1e-6;
+    const c=byId[id],dt=c&&c.circ?c.period/2000:1e-6;
     return mul(add(position(id,t+dt,frame),mul(position(id,t-dt,frame),-1)),AU/M.SEC_PER_YEAR/(2*dt));
   }
-  window.CompanionModel=Object.freeze({craft,byId,earthAt,offset,heliocentric,position,velocity,haloOffset,l2Offset,normal,H,moon});
+  window.CompanionModel=Object.freeze({craft,byId,earthAt,offset,heliocentric,position,velocity,haloOffset,l2Offset,normal,normalOf,groundRotate,equatorPoint,SPIN_AXIS,SIDEREAL_DAY_YR,RE_AU,moon,MIN});
 })();
-
 </script>
 <script>
 (() => {
@@ -544,7 +583,7 @@ const P = M.PLANETS;
 const TAU = Math.PI * 2, D = Math.PI / 180;
 const KMS = M.AU_KM / M.SEC_PER_YEAR;
 const EARTH = P.find(p=>p.id==='earth');
-const SPEEDS = {spin:0.4651, orbit:29.78, gal:M.SUN_SPEED_KM_S, cmb:369.8, mw:552, and:110, s2:7700, flare:113000, light:299792.458};
+const SPEEDS = {spin:0.4651, orbit:29.78, gal:M.SUN_SPEED_KM_S, iss:7.66, psp:191.7, v1:17, cmb:369.8, mw:552, and:110, s2:7700, flare:113000, light:299792.458};
 const $ = id => document.getElementById(id);
 const canvas = $('universe');
 const ctx = canvas.getContext('2d', {alpha:false});
@@ -564,45 +603,58 @@ const FONT='ui-monospace,"SF Mono","Cascadia Mono","JetBrains Mono",Menlo,Consol
 let randomSeed=734871; const rand=()=>{randomSeed=(randomSeed*1664525+1013904223)>>>0;return randomSeed/4294967296;};
 const gauss=()=>{let u=0;while(!u)u=rand();return Math.sqrt(-2*Math.log(u))*Math.cos(TAU*rand());};
 const stars=Array.from({length:220},()=>({x:rand(),y:rand(),r:.3+rand()*.9,a:.1+rand()*.4}));
-
-/* ---------- Moon, observatories and escaping spacecraft ---------- */
+/* ---------- Moon, satellites, observatories and spacecraft ---------- */
 const C=window.CompanionModel;
 Object.assign(state,{craft:'moon',craftFrame:'galaxy',craftTime:0,craftRate:.05,craftScale:'teaching',craftTrails:true,craftGuides:true,craftLabels:true});
 let craftGeometryCache=null;
 const companion=()=>C.byId[state.craft];
 const plus=(a,b)=>a.map((v,i)=>v+b[i]);
 const times=(a,k)=>a.map(v=>v*k);
-function craftZoom(id=state.craft){return state.craftFrame==='earth'||state.craftScale==='physical'||C.byId[id]?.group==='probe'?1:(companion().group==='l2'?14:(C.byId[id]?.zoom||companion().zoom));}
-function craftDrift(){return state.craftFrame==='galaxy'?(state.craftScale==='teaching'&&companion().group!=='probe'?2:M.SUN_AU_PER_YEAR):0;}
-function craftHistory(){const c=companion();return c.group==='probe'?Math.min(20,state.craftTime):state.craftFrame==='earth'?(c.id==='hubble'?c.period*2:c.group==='l2'?1:c.period*2):state.craftFrame==='galaxy'?2:1.1;}
+const isLocalObj=c=>!!c&&(c.group==='bound'||c.group==='l2');
+const earthCentred=()=>state.craftFrame==='earth'||state.craftFrame==='ground';
+const FRAME_NAME={ground:'Ground frame',earth:'Earth frame',solar:'Sun frame',galaxy:'Galactic frame'};
+function craftZoom(id=state.craft){const c=C.byId[id],k=companion();if(earthCentred()||state.craftScale==='physical'||!isLocalObj(k)||(c&&!isLocalObj(c)))return 1;return k.group==='l2'?14:((c&&c.zoom)||k.zoom);}
+function craftDrift(){return state.craftFrame==='galaxy'?(state.craftScale==='teaching'&&isLocalObj(companion())?2:M.SUN_AU_PER_YEAR):0;}
+function craftHistory(){const c=companion(),f=state.craftFrame;
+  if(c.group==='probe')return Math.min(20,state.craftTime);
+  if(c.group==='helio')return f==='galaxy'?.3:.25;
+  if(f==='ground')return c.gh||c.period*2;
+  if(f==='earth')return c.group==='l2'?1:c.period*2;
+  return f==='galaxy'?2:1.1;}
 function craftPoint(id,t,customOffset){
-  const frame=state.craftFrame,e=C.earthAt(t);
+  const frame=state.craftFrame,e=C.earthAt(t),cc=C.byId[id];
   let p;
   if(id==='l2')p=plus(e,times(C.l2Offset(t),craftZoom()));
   else if(customOffset)p=plus(e,times(customOffset,craftZoom(id)));
-  else if(C.byId[id]&&C.byId[id].group!=='probe')p=plus(e,times(C.offset(id,t),craftZoom(id)));
+  else if(isLocalObj(cc))p=plus(e,times(C.offset(id,t),craftZoom(id)));
   else p=C.heliocentric(id,t);
-  if(frame==='earth')p=plus(p,times(e,-1));
+  if(frame==='earth'||frame==='ground'){p=plus(p,times(e,-1));if(frame==='ground')p=C.groundRotate(p,t);}
   if(frame==='galaxy')p[1]+=craftDrift()*(t-state.craftTime);
   return p;
 }
 function craftGroup(){const c=companion();return c.group==='probe'?C.craft.filter(x=>x.group==='probe'):c.group==='l2'?C.craft.filter(x=>x.group==='l2'):[c];}
-function craftEnvelope(){return state.craft==='hubble'&&state.craftFrame!=='earth';}
+function craftEnvelope(){return !!companion().circ&&!earthCentred();}
 function buildCraftGeometry(){
-  const t=state.craftTime,c=companion(),frame=state.craftFrame,hist=craftHistory(),paths=[],guides=[],bodies=[];
+  const t=state.craftTime,c=companion(),frame=state.craftFrame,hist=craftHistory(),paths=[],guides=[],bodies=[],ec=earthCentred(),loc=isLocalObj(c);
   const addBody=(id,name,color,r,p)=>bodies.push({id,name,color,r,p});
-  addBody('earth','Earth','#65dfd0',frame==='earth'&&c.id==='hubble'?0:6.5,craftPoint('earth',t));
-  if(frame!=='earth'||c.group==='probe')addBody('sun','Sun','#ffca7a',10,craftPoint('sun',t));
+  addBody('earth','Earth','#65dfd0',ec&&c.circ?0:6.5,craftPoint('earth',t));
+  if(!ec||!loc)addBody('sun','Sun','#ffca7a',10,craftPoint('sun',t));
   for(const ob of craftGroup()){
-    if(!(ob.id==='hubble'&&craftEnvelope()&&!state.paused))addBody(ob.id,ob.name+(ob.id==='roman'?' · destination':''),ob.color,ob.id==='moon'?4.3:5,craftPoint(ob.id,t));
+    if(!(ob.circ&&craftEnvelope()&&!state.paused))addBody(ob.id,ob.name+(ob.id==='roman'?' · destination':''),ob.color,ob.id==='moon'?4.3:5,craftPoint(ob.id,t));
     if(hist>0){
-      const n=ob.group==='probe'?160:craftEnvelope()?240:Math.min(1800,Math.max(180,Math.ceil(hist/ob.period*100))),pts=[];
+      let n;
+      if(ob.group==='probe')n=160;else if(craftEnvelope())n=240;else if(ob.group==='helio')n=900;
+      else{n=Math.min(2400,Math.max(180,Math.ceil(hist/ob.period*100)));if(frame==='ground')n=Math.min(2400,Math.max(n,Math.ceil(hist/C.SIDEREAL_DAY_YR*120)));}
+      const pts=[];
       for(let j=0;j<=n;j++)pts.push(craftPoint(craftEnvelope()?'earth':ob.id,t-hist+hist*j/n));
       paths.push({points:pts,color:ob.color,selected:ob.id===c.id,envelope:craftEnvelope()});
     }
     if(ob.group==='probe'){
       guides.push({points:[craftPoint(ob.id,0),craftPoint(ob.id,t+12)],color:ob.color,dash:[3,6]});
-    }else{
+    }else if(ob.group==='helio'){
+      const pts=[];for(let j=0;j<=200;j++){let q=C.heliocentric(ob.id,j/200*ob.period);if(ec)q=plus(q,times(C.earthAt(t),-1));pts.push(q);}
+      guides.push({points:pts,color:ob.color,dash:[]});
+    }else if(frame!=='ground'){
       const pts=[];
       for(let j=0;j<=160;j++){
         const q=ob.group==='l2'?C.haloOffset(ob,t,j/160*TAU):C.offset(ob.id,j/160*ob.period);
@@ -616,11 +668,10 @@ function buildCraftGeometry(){
     const moonGuide=[];
     for(let j=0;j<=120;j++)moonGuide.push(craftPoint('moon',t,C.offset('moon',j/120*C.moon.period)));
     guides.push({points:moonGuide,color:'#87939f',dash:[2,5]});
-    // Apply the same Earth-relative magnification to Moon and L2 in this group.
     const l2=craftPoint('l2',t);addBody('l2','L2 · a location','#9c9586',3,l2);
     guides.push({points:[craftPoint('earth',t),l2],color:'#b2a38b',dash:[3,5]});
   }
-  if(frame!=='earth'&&hist>0){
+  if(!ec&&hist>0){
     for(const id of ['earth',...(frame==='galaxy'?['sun']:[])]){
       const pts=[];for(let j=0;j<=240;j++)pts.push(craftPoint(id,t-hist+hist*j/240));
       paths.unshift({points:pts,color:id==='earth'?'#65dfd0':'#e9b765',selected:false});
@@ -630,11 +681,14 @@ function buildCraftGeometry(){
     const pts=[];for(let j=0;j<=180;j++)pts.push(C.earthAt(j/180*EARTH.period));
     guides.unshift({points:pts,color:'#65dfd0',dash:[2,5]});
   }
+  if(c.group==='helio'){
+    for(const pid of ['mercury','venus']){const pl=P.find(p=>p.id===pid),pts=[];for(let j=0;j<=180;j++){let p=M.orbitAtE(pl,j/180*TAU);if(ec)p=plus(p,times(C.earthAt(t),-1));pts.push(p);}guides.unshift({points:pts,color:pl.color,dash:[3,5]});}
+  }
   if(c.group==='probe'){
     const nep=P.find(p=>p.id==='neptune'),pts=[];
     for(let j=0;j<=180;j++){
       let p=M.orbitAtE(nep,j/180*TAU);
-      if(frame==='earth')p=plus(p,times(C.earthAt(t),-1));
+      if(ec)p=plus(p,times(C.earthAt(t),-1));
       pts.push(p);
     }
     guides.unshift({points:pts,color:'#8b9cf2',dash:[3,5]});
@@ -645,16 +699,15 @@ function fitCraftProjection(right,up,front){
   craftGeometryCache=buildCraftGeometry();
   const c=companion(),frame=state.craftFrame,g=craftGeometryCache;
   let center=[0,0,0],points=[];
-  if(c.group==='probe'){
-    points=g.bodies.map(b=>b.p).concat(g.paths.flatMap(p=>p.points.filter((_,i)=>i%12===0)));
-    // Include a minimal region even at time zero.
+  if(!isLocalObj(c)){
+    points=g.bodies.map(b=>b.p).concat(g.paths.flatMap(p=>p.points.filter((_,i)=>i%12===0)),g.guides.flatMap(p=>p.points.filter((_,i)=>i%10===0)));
     points.push([0,0,0]);
-  }else if(frame==='earth'){
+  }else if(earthCentred()){
     if(c.group==='l2'){
       center=times(C.l2Offset(state.craftTime),.54);
       const r=.012;for(const a of [[r,0,0],[-r,0,0],[0,r,0],[0,-r,0],[0,0,r],[0,0,-r]])points.push(plus(center,a));
     }else{
-      const r=c.id==='hubble'?9000/M.AU_KM:.0033;
+      const r=(c.view||493000)/M.AU_KM;
       return {center,right,up,front,scale:Math.min((W-80)/(r*2),(H-220)/(r*2))*state.zoom};
     }
   }else if(frame==='solar'){
@@ -680,6 +733,17 @@ function drawSpacecraft(b){
   if(b.id==='hubble'){
     ctx.rotate(-.5);ctx.fillStyle='#456f99';ctx.fillRect(-14,-4,8,8);ctx.fillRect(6,-4,8,8);ctx.strokeRect(-14,-4,8,8);ctx.strokeRect(6,-4,8,8);
     ctx.fillStyle='#ccd7e3';ctx.fillRect(-3,-9,6,18);ctx.strokeRect(-3,-9,6,18);
+  }else if(b.id==='iss'){
+    ctx.rotate(-.35);ctx.fillStyle='#c8b98f';ctx.fillRect(-16,-1,32,2);
+    ctx.fillStyle='#4a6f95';for(const x of [-15,-10,7,12]){ctx.fillRect(x,-8,3,16);ctx.strokeRect(x,-8,3,16);}
+    ctx.fillStyle='#e8e3d0';ctx.fillRect(-4,-3,8,6);ctx.strokeRect(-4,-3,8,6);
+  }else if(b.id==='gps'||b.id==='geo'){
+    ctx.fillStyle='#456f99';ctx.fillRect(-15,-3,9,6);ctx.fillRect(6,-3,9,6);ctx.strokeRect(-15,-3,9,6);ctx.strokeRect(6,-3,9,6);
+    ctx.fillStyle='#d9cfb8';ctx.fillRect(-4,-4,8,8);ctx.strokeRect(-4,-4,8,8);
+    if(b.id==='geo'){ctx.beginPath();ctx.arc(0,-7,4,Math.PI,TAU);ctx.stroke();}
+  }else if(b.id==='parker'){
+    ctx.fillStyle='#f4ead8';ctx.beginPath();ctx.ellipse(0,-6,9,3,0,0,TAU);ctx.fill();ctx.stroke();
+    ctx.fillStyle='#8a7a60';ctx.beginPath();ctx.moveTo(-5,-3);ctx.lineTo(5,-3);ctx.lineTo(0,9);ctx.closePath();ctx.fill();ctx.stroke();
   }else if(b.id==='jwst'){
     ctx.fillStyle='#b59150';ctx.beginPath();for(let i=0;i<6;i++){const a=TAU*i/6;const x=8*Math.cos(a),y=8*Math.sin(a);i?ctx.lineTo(x,y):ctx.moveTo(x,y);}ctx.closePath();ctx.fill();ctx.stroke();
     ctx.beginPath();ctx.moveTo(-12,9);ctx.lineTo(0,13);ctx.lineTo(12,9);ctx.lineTo(0,5);ctx.closePath();ctx.fillStyle='#9b8caa';ctx.fill();
@@ -692,16 +756,15 @@ function drawSpacecraft(b){
   ctx.restore();b.screen=q;b.actualR=14;bodyHits.push({id:b.id,x:q.x,y:q.y,r:23});
 }
 function drawCompanions(){
-  const g=craftGeometryCache,c=companion();
+  const g=craftGeometryCache,c=companion(),ec=earthCentred(),ground=state.craftFrame==='ground';
+  if(state.craftFrame==='galaxy')drawSky();
   if(state.craftGuides)for(const p of g.guides)screenPath(p.points,p.color,1,.32,false,p.dash);
   if(state.craftTrails)for(const p of g.paths){if(p.envelope)screenPath(p.points,p.color,2,.7,false,[4,4]);else fadedTrail(p.points,p.color,p.selected?2.4:1.2,p.selected);}
-  if(c.group==='l2'&&state.craftFrame==='earth'){
+  if(c.group==='l2'&&ec){
     const v=C.l2Offset(state.craftTime);drawArrow(times(v,-.08),times(v,-.42),'#e9b765');
     if(state.craftLabels)textAt('Sun · off-screen',times(v,-.43),'#dcbf86',9,-45,-24);
   }
-  if(state.craftFrame==='earth'&&c.id==='hubble'){
-    const earth=g.bodies.find(b=>b.id==='earth');earth.r=6371/M.AU_KM*projection.scale/(W<500?.86:1);
-  }
+  if(ec&&c.circ){const earth=g.bodies.find(b=>b.id==='earth');earth.r=C.RE_AU*projection.scale/(W<500?.86:1);}
   g.bodies.sort((a,b)=>project(a.p).z-project(b.p).z);
   const previousFocus=state.focus;state.focus=state.craft;
   for(const b of g.bodies){
@@ -710,35 +773,44 @@ function drawCompanions(){
     }else if(C.byId[b.id]&&b.id!=='moon')drawSpacecraft(b);
     else drawBody(b);
   }
+  if(ec&&c.circ){
+    const m=C.equatorPoint(state.craftTime,ground);
+    if(dot(m,projection.front)>=0){const q=project(times(m,C.RE_AU));ctx.fillStyle='#ffd27a';ctx.strokeStyle='#1a1307';ctx.lineWidth=1;ctx.beginPath();ctx.arc(q.x,q.y,3.4,0,TAU);ctx.fill();ctx.stroke();
+      if(state.craftLabels)screenText(ground?'Point on the equator · fixed in this frame':'Point on the equator · turning with Earth',q.x+8,q.y+14,'rgba(255,214,140,.9)');}
+  }
   if(state.craftLabels){
     const oldLabels=state.labels;state.labels=true;bodyLabels(g.bodies);state.labels=oldLabels;
     if(c.group==='probe')textAt('Neptune orbit · 30 AU',M.toGalactic([0,30,0]),'#8b9cf2',9,6,-8);
-    if(craftEnvelope()&&!state.paused)textAt('Hubble · rapid-orbit envelope',craftPoint('earth',state.craftTime),'#a5c8ff',9,16,32);
+    if(c.group==='helio')for(const pid of ['mercury','venus']){const pl=P.find(p=>p.id===pid);let p=M.orbitAtE(pl,Math.PI*.5);if(ec)p=plus(p,times(C.earthAt(state.craftTime),-1));textAt(pl.name+' orbit',p,rgba(pl.color,.9),9,6,-6);}
+    if(craftEnvelope()&&!state.paused)textAt(c.name+' · rapid-orbit envelope',craftPoint('earth',state.craftTime),c.color,9,16,32);
   }
   state.focus=previousFocus;
   if(state.craftFrame==='galaxy')drawCompass();
-  if(state.craftScale==='physical'||state.craftFrame==='earth'||c.group==='probe'){
-    const values=[1000,5000,10000,100000,300000,1000000,M.AU_KM,M.AU_KM*10,M.AU_KM*50,M.AU_KM*100];
+  if(state.craftScale==='physical'||ec||!isLocalObj(c)){
+    const values=[1000,5000,10000,20000,100000,300000,1000000,M.AU_KM*.1,M.AU_KM,M.AU_KM*10,M.AU_KM*50,M.AU_KM*100];
     const km=values.filter(k=>k/M.AU_KM*projection.scale<Math.min(130,W*.28)).pop();
-    if(km){const px=km/M.AU_KM*projection.scale,x=26,y=H-100;ctx.strokeStyle='#a19c90';ctx.beginPath();ctx.moveTo(x,y);ctx.lineTo(x+px,y);ctx.moveTo(x,y-3);ctx.lineTo(x,y+3);ctx.moveTo(x+px,y-3);ctx.lineTo(x+px,y+3);ctx.stroke();ctx.fillStyle='#bdb8ae';ctx.font='9px '+FONT;ctx.fillText(km>=M.AU_KM?fmt(km/M.AU_KM,0)+' AU':fmt(km,0)+' km',x,y-8);}
+    if(km){const px=km/M.AU_KM*projection.scale,x=26,y=H-100;ctx.strokeStyle='#a19c90';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(x,y);ctx.lineTo(x+px,y);ctx.moveTo(x,y-3);ctx.lineTo(x,y+3);ctx.moveTo(x+px,y-3);ctx.lineTo(x+px,y+3);ctx.stroke();ctx.fillStyle='#bdb8ae';ctx.font='9px '+FONT;ctx.fillText(km>=M.AU_KM*.1?fmt(km/M.AU_KM,km<M.AU_KM?1:0)+' AU':fmt(km,0)+' km',x,y-8);}
   }
 }
 function craftRates(){
   const c=companion();
   if(c.group==='probe')return [[.25,1,2,5],'yr',1];
-  if(state.craftFrame!=='earth')return [[.02,.05,.1,.25],'yr',1];
-  if(c.id==='hubble')return [[2,5,10,20],'min',1/(1440*365.25)];
+  if(c.group==='helio')return [[1,2,5,10],'day',1/365.25];
+  if(!earthCentred())return [[.02,.05,.1,.25],'yr',1];
+  if(c.circ)return [c.rates[0],c.rates[1],C.MIN];
+  if(state.craftFrame==='ground')return [[.05,.1,.25,.5],'day',1/365.25];
   return c.group==='l2'?[[1,5,10,20],'day',1/365.25]:[[.25,.5,1,2],'day',1/365.25];
 }
+const stepLabel=m=>m<60?m+' min':(m/60)+' hr';
 function configureCraftTime(){
-  const c=companion(),frame=state.craftFrame;
-  const span=c.group==='probe'?100:frame!=='earth'?5:c.id==='hubble'?1/365.25:c.group==='l2'?2:90/365.25;
-  const tl=$('timeline');tl.min='0';tl.max=String(Math.max(span,state.craftTime));tl.step=String(c.id==='hubble'&&frame==='earth'?1/(1440*365.25):span/2000);tl.setAttribute('aria-label','Elapsed model time, arbitrary starting phase');
-  $('step').textContent=c.group==='probe'?'+5 years':frame!=='earth'?'+1 year':c.id==='hubble'?'+15 min':c.group==='l2'?'+30 days':'+1 day';
+  const c=companion(),ec=earthCentred();
+  const span=c.group==='probe'?100:c.group==='helio'?1:!ec?5:c.circ?Math.max(1,c.period*365.25*6)/365.25:c.group==='l2'?2:90/365.25;
+  const tl=$('timeline');tl.min='0';tl.max=String(Math.max(span,state.craftTime));tl.step=String(c.circ&&ec?C.MIN:span/2000);tl.setAttribute('aria-label','Elapsed model time, illustrative starting phase');
+  $('step').textContent=c.group==='probe'?'+5 years':c.group==='helio'?'+10 days':!ec?'+1 year':c.circ?'+'+stepLabel(c.stepMin):c.group==='l2'?'+30 days':'+1 day';
   $('step').setAttribute('aria-label','Advance '+$('step').textContent.slice(1)+' and pause');
 }
-function craftStep(){const c=companion();return c.group==='probe'?5:state.craftFrame!=='earth'?1:c.id==='hubble'?15/(1440*365.25):c.group==='l2'?30/365.25:1/365.25;}
-function defaultCraftRate(){const c=companion();state.craftRate=c.group==='probe'?2:state.craftFrame!=='earth'?.05:c.id==='hubble'?10/(1440*365.25):c.group==='l2'?10/365.25:1/365.25;}
+function craftStep(){const c=companion(),ec=earthCentred();return c.group==='probe'?5:c.group==='helio'?10/365.25:!ec?1:c.circ?c.stepMin*C.MIN:c.group==='l2'?30/365.25:1/365.25;}
+function defaultCraftRate(){const c=companion(),ec=earthCentred();state.craftRate=c.group==='probe'?2:c.group==='helio'?5/365.25:!ec?.05:c.circ?c.rates[2]*C.MIN:state.craftFrame==='ground'?.1/365.25:c.group==='l2'?10/365.25:1/365.25;}
 function updateCraftFocus(){
   const c=companion();$('focusLabel').textContent=c.id==='moon'?'Natural satellite':'Spacecraft in focus';$('focusName').textContent=c.name;$('focusSub').textContent=c.sub;
   $('planetOrb').style.background='radial-gradient(circle at 33% 28%,#fff,'+c.color+' 35%,#192536 85%)';
@@ -747,60 +819,72 @@ function updateCraftFocus(){
   document.querySelectorAll('[data-craft]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.craft===c.id)));
 }
 function updateCraftScale(){
-  const c=companion(),frame=state.craftFrame,physical=state.craftScale==='physical',local=frame==='earth',probe=c.group==='probe';
-  document.querySelectorAll('[data-craft-frame]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.craftFrame===frame)));
+  const c=companion(),frame=state.craftFrame,physical=state.craftScale==='physical',ec=earthCentred(),ground=frame==='ground',probe=c.group==='probe',helio=c.group==='helio',loc=isLocalObj(c);
+  document.querySelectorAll('[data-craft-frame]').forEach(b=>{b.setAttribute('aria-pressed',String(b.dataset.craftFrame===frame));if(b.dataset.craftFrame==='ground')b.disabled=c.group!=='bound';});
   document.querySelectorAll('[data-craft-scale]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.craftScale===state.craftScale)));
-  $('craftScaleControls').hidden=local||probe;
-  $('scaleTag').textContent=probe?'Schematic escape · AU scale':local?'Distances to scale':physical?'Physical distances':'Teaching scale · enlarged orbits';
-  $('scaleTag').classList.toggle('physical',local||physical||probe);
-  $('craftScaleNote').textContent=physical?'One shared distance scale. Tiny orbits may overlap Earth’s marker. Choose Earth to resolve them.':'Earth-relative distances ×'+craftZoom()+'.'+(frame==='galaxy'?' Sun’s forward travel ÷24.3.':' Earth’s 1 AU orbit stays unchanged.');
-  $('scaleFootnote').textContent=probe?'Outbound demonstration only: all probes start at a chosen 100 AU radius at model time 0. Rounded constant speeds; schematic directions; no live positions or launch/flyby replay. Galactic drift is on the same AU scale.':local?(c.id==='hubble'?'Earth’s radius and orbital distance are to scale; Hubble’s icon is enlarged. Fixed ≈500 km altitude; orbit orientation and phase are illustrative.':c.group==='l2'?'Earth-centred, non-rotating axes. The Sun direction changes over the year; halo guides freeze its current orientation. Sizes enlarged. Roman shows a schematic destination orbit.':'Earth-centred, non-rotating axes. Distances to scale; body markers enlarged. Fixed lunar ellipse; no nodal precession or perturbations.'):(physical?'All distances use one scale; body icons enlarged. ':'Teaching scale: local motion ×'+craftZoom()+(frame==='galaxy'?', Galactic drift ÷24.3.':'.'))+' Model phases are arbitrary, not today’s sky.';
-  const f=frame==='earth'?'Relative to Earth':frame==='solar'?'Relative to the Sun':'Relative to the local Galaxy';
+  $('craftScaleControls').hidden=ec||!loc;
+  $('scaleTag').textContent=probe?'Schematic escape · AU scale':helio?'Distances to scale · icon enlarged':ground?'Earth-fixed · to scale':ec?'Distances to scale':physical?'Physical distances':'Teaching scale · enlarged orbits';
+  $('scaleTag').classList.toggle('physical',ec||physical||!loc);
+  $('craftScaleNote').textContent=physical?'One shared distance scale. Tiny orbits may overlap Earth’s marker. Choose Earth or Ground to resolve them.':'Earth-relative distances ×'+craftZoom()+'.'+(frame==='galaxy'?' Sun’s forward travel ÷24.3.':' Earth’s 1 AU orbit stays unchanged.');
+  let foot;
+  if(probe)foot='Outbound demonstration only: all probes start at a chosen 100 AU radius at model time 0. Rounded constant speeds; schematic directions; no live positions or launch/flyby replay. Galactic drift is on the same AU scale.';
+  else if(helio)foot='Parker’s orbit is to scale, with Mercury’s and Venus’s orbits for reference. Plane and phase illustrative; Venus flybys not replayed. Galactic drift uses the true 230 km/s on the same AU scale.';
+  else if(ec){
+    if(c.circ)foot=(ground?'Earth-fixed axes that turn with the surface once per sidereal day (23 h 56 min). ':'Earth-centred, non-rotating axes; Earth turns beneath the orbit (gold dot). ')+'Earth’s radius and the orbit radius are to scale; the icon is enlarged. Circular orbit at a rounded, fixed altitude; orientation and phase illustrative.';
+    else if(c.group==='l2')foot='Earth-centred, non-rotating axes. The Sun direction changes over the year; halo guides freeze its current orientation. Sizes enlarged. Roman shows a schematic destination orbit.';
+    else foot=ground?'Earth-fixed axes turning once per sidereal day. The Moon seems to circle in about 24.8 hours because Earth turns; its real orbit takes 27.3 days. Markers enlarged.':'Earth-centred, non-rotating axes. Distances to scale; body markers enlarged. Fixed lunar ellipse; no nodal precession or perturbations.';
+  }else foot=(physical?'All distances use one scale; body icons enlarged. ':'Teaching scale: local motion ×'+craftZoom()+(frame==='galaxy'?', Galactic drift ÷24.3.':'.'))+' Model phases are illustrative, not today’s sky.';
+  $('scaleFootnote').textContent=foot;
+  const f={ground:'Relative to the ground (turning with Earth)',earth:'Relative to Earth (not rotating)',solar:'Relative to the Sun',galaxy:'Relative to the local Galaxy'}[frame];
   $('frameBadge').textContent=f;
-  $('sceneTitle').textContent=probe?'Leaving the Sun. Still moving with the galaxy.':c.group==='l2'?'A solar orbit, keeping pace with Earth.':c.id==='hubble'?'A 95-minute orbit inside a much bigger journey.':'A moon around a moving world.';
-  $('sceneCaption').textContent=probe?'Voyager 1 & 2 · Pioneer 10 & 11. One shared model clock.':frame==='earth'?'Subtract Earth’s position at every instant. The local motion remains.':frame==='solar'?'Earth and its companions travel around the Sun together.':"Add the Sun’s Galactic motion. The camera follows the Sun; the trails keep that motion.";
-  $('viewHint').innerHTML='<strong>Drag to rotate · scroll or pinch to zoom</strong><br>'+(craftEnvelope()?'Fast Hubble laps shown as an envelope in annual views.':probe?'Coloured paths: probes · gold: the Sun':c.group==='l2'?'Cross: L2 · gold: Webb · lavender: Roman':'White: Moon · teal: Earth · gold: Sun');
-  $('motionFormula').textContent=frame==='earth'?'Relative position = object position − Earth position':frame==='solar'?(probe?'Probe’s solar motion = its outward escape trajectory':'Solar position = Earth’s solar position + local offset'):(probe?'Galactic velocity = Sun’s Galactic velocity + probe’s solar-relative velocity':'Galactic position = Sun’s Galactic position + Earth’s solar position + local offset');
-  $('motionExplanation').textContent=probe?'An escaping probe is no longer bound to the Sun. It retains the motion it inherited at launch, with changes from planetary encounters. The Sun is not pulling it along at a fixed separation.':c.group==='l2'?'Near L2, “local offset” is a convenient coordinate description. The telescope’s orbit is shaped jointly by Sun and Earth; it is not a simple two-body orbit around Earth.':'Launch does not erase Earth’s velocity. Gravity bends a satellite’s path around Earth while their shared motion around the Sun continues. Velocities add as vectors.';
-  $('canvasSummary').textContent=c.long+'. '+f+'. '+$('scaleFootnote').textContent;
+  $('sceneTitle').textContent=c.title;
+  $('sceneCaption').textContent=probe?'Voyager 1 & 2 · Pioneer 10 & 11. One shared model clock.':ground?'Earth’s rotation is subtracted too: this is how the sky moves as seen from where you stand.':frame==='earth'?'Subtract Earth’s position at every instant. The local motion remains.':frame==='solar'?(helio?'Parker’s 88-day orbit, measured from the Sun.':'Earth and its companions travel around the Sun together.'):'Add the Sun’s Galactic motion. The camera follows the Sun; the trails keep that motion.';
+  $('viewHint').innerHTML='<strong>Drag to rotate · scroll or pinch to zoom</strong><br>'+(craftEnvelope()?'Fast orbit shown as an envelope in annual views; pause for a snapshot.':probe?'Coloured paths: probes · gold: the Sun':helio?'Orange: Parker · dashed: Mercury &amp; Venus orbits · gold: the Sun':c.group==='l2'?'Cross: L2 · gold: Webb · lavender: Roman':c.circ?'Gold dot: a point on Earth’s equator':'White: Moon · teal: Earth · gold: Sun');
+  $('motionFormula').textContent=ground?'Ground position = (object − Earth), turned back by Earth’s spin angle':frame==='earth'?'Relative position = object position − Earth position':frame==='solar'?(loc?'Solar position = Earth’s solar position + local offset':'Solar motion = the object’s own orbit or escape path'):(loc?'Galactic position = Sun’s Galactic position + Earth’s solar position + local offset':'Galactic velocity = Sun’s Galactic velocity + object’s solar-relative velocity');
+  $('motionExplanation').textContent=probe?'An escaping probe is no longer bound to the Sun. It keeps the motion it inherited at launch, with changes from planetary encounters. The Sun is not pulling it along at a fixed separation.':helio?'At closest approach Parker moves ≈190 km/s relative to the Sun, but the Sun itself moves ≈230 km/s through the galaxy. Add the arrows and Parker always keeps moving forward: it swings to the sides, but never backward.':c.group==='l2'?'Near L2, “local offset” is a convenient coordinate description. The telescope’s orbit is shaped jointly by Sun and Earth; it is not a simple two-body orbit around Earth.':ground?(c.id==='geo'?'“Stationary” is a statement about a frame. Relative to the ground this satellite does not move at all; relative to the galaxy it travels about 230 km/s. Both are true.':'In the ground frame Earth’s rotation is subtracted, so orbits appear to drift westward and the Moon seems to circle once a day. Nothing physical changed; only the reference did.'):'Launch does not erase Earth’s velocity. Gravity bends a satellite’s path around Earth while their shared motion around the Sun continues. Velocities add as vectors.';
+  $('canvasSummary').textContent=c.long+'. '+f+'. '+foot;
 }
 function updateCraftTime(){
   const t=state.craftTime,c=companion(),days=t*365.25;
-  const txt=state.craftFrame==='earth'&&c.group!=='probe'?(c.id==='hubble'?fmt(days*24,2)+' hours':fmt(days,1)+' days'):fmt(t,2)+' years';
-  $('timeValue').textContent=txt;$('timeline').setAttribute('aria-valuetext',txt+' from an arbitrary model start');if(t>Number($('timeline').max))$('timeline').max=String(t*1.2);if(document.activeElement!==$('timeline'))$('timeline').value=String(t);
+  const txt=c.group==='helio'?fmt(days,1)+' days':earthCentred()&&isLocalObj(c)?(c.circ?fmt(days*24,2)+' hours':fmt(days,1)+' days'):fmt(t,2)+' years';
+  $('timeValue').textContent=txt;$('timeline').setAttribute('aria-valuetext',txt+' from an illustrative model start');if(t>Number($('timeline').max))$('timeline').max=String(t*1.2);if(document.activeElement!==$('timeline'))$('timeline').value=String(t);
   const frame=state.craftFrame,v=C.velocity(c.id,t,frame);
-  $('distanceLabel').textContent='Model speed · '+(frame==='earth'?'Earth frame':frame==='solar'?'Sun frame':'Galactic frame');$('distanceValue').textContent=fmt(Math.hypot(...v),2);$('distanceUnit').textContent='km/s';
-  const dist=Math.hypot(...C.position(c.id,t,c.group==='probe'?'solar':'earth'));
-  $('distanceNote').textContent=(c.group==='probe'?'Model distance from Sun: '+fmt(dist,1)+' AU.':'Model distance from Earth: '+fmt(dist*M.AU_KM,0)+' km.')+' Readouts use physical coordinates, including in teaching scale.';
+  $('distanceLabel').textContent='Model speed · '+FRAME_NAME[frame];$('distanceValue').textContent=fmt(Math.hypot(...v),2);$('distanceUnit').textContent='km/s';
+  let note;
+  if(c.group==='probe')note='Model distance from Sun: '+fmt(Math.hypot(...C.position(c.id,t,'solar')),1)+' AU.';
+  else if(c.group==='helio'){const d=Math.hypot(...C.position(c.id,t,'solar'));note='Model distance from Sun’s centre: '+fmt(d,3)+' AU ('+fmt(d*M.AU_KM/1e6,1)+' million km).';}
+  else note='Model distance from Earth’s centre: '+fmt(Math.hypot(...C.position(c.id,t,'earth'))*M.AU_KM,0)+' km.';
+  $('distanceNote').textContent=note+' Readouts use physical coordinates, including in teaching scale.';
 }
 function applyCraft(){
   sceneStart=performance.now();configureCraftTime();speedOptions();updateCraftFocus();updateCraftScale();updateCraftTime();resetCamera();dirty=true;
 }
 function setCraft(id){
-  if(!C.byId[id])return;const old=companion();state.craft=id;
-  // Preserve the selected reference frame except when first entering escape paths.
-  if(companion().group==='probe'&&old.group!=='probe')state.craftFrame='solar';
-  if(id==='hubble')state.craftFrame='earth';
-  if(companion().group==='l2'&&old.group!=='l2')state.craftFrame='earth';
-  state.craftTime=0;defaultCraftRate();applyCraft();announce(companion().long+' selected. Model clock reset.');
+  if(!C.byId[id])return;const old=companion(),wasEC=earthCentred();state.craft=id;const c=companion();
+  if(c.group==='probe'&&old.group!=='probe')state.craftFrame='solar';
+  if(c.group==='helio')state.craftFrame='solar';
+  if(c.circ&&!(old.circ&&wasEC))state.craftFrame='earth';
+  if(c.group==='l2'&&old.group!=='l2')state.craftFrame='earth';
+  if(state.craftFrame==='ground'&&c.group!=='bound')state.craftFrame='earth';
+  state.craftTime=0;defaultCraftRate();applyCraft();announce(c.long+' selected. Model clock reset.');
 }
 function setCraftFrame(frame){
-  if(!['earth','solar','galaxy'].includes(frame))return;state.craftFrame=frame;defaultCraftRate();applyCraft();announce('Reference frame: '+frame+'. Model time preserved.');
+  if(!['ground','earth','solar','galaxy'].includes(frame))return;
+  if(frame==='ground'&&companion().group!=='bound')return;
+  state.craftFrame=frame;defaultCraftRate();applyCraft();announce('Reference frame: '+FRAME_NAME[frame]+'. Model time preserved.');
 }
-
 /* ---------- Glow sprites ---------- */
 function makeSprite(r,g,b){const c=document.createElement('canvas');c.width=c.height=64;const x=c.getContext('2d'),gr=x.createRadialGradient(32,32,0,32,32,32);gr.addColorStop(0,'rgba('+r+','+g+','+b+',1)');gr.addColorStop(.4,'rgba('+r+','+g+','+b+',.3)');gr.addColorStop(1,'rgba('+r+','+g+','+b+',0)');x.fillStyle=gr;x.fillRect(0,0,64,64);return c;}
 const SPR={warm:makeSprite(255,200,150),cool:makeSprite(150,180,235),dark:makeSprite(4,6,9),white:makeSprite(255,240,220),pink:makeSprite(255,110,170),hot:makeSprite(255,170,90)};
 function sprite(img,x,y,r,a){ctx.globalAlpha=a;ctx.drawImage(img,x-r,y-r,2*r,2*r);ctx.globalAlpha=1;}
-
-/* ---------- Milky Way galaxy model (view 03) ---------- */
+/* ---------- Milky Way galaxy model ---------- */
 const PITCH=13*D, KP=1/Math.tan(PITCH), SUN_TH=0.7, ARM_STEP=Math.exp(TAU/4*Math.tan(PITCH));
 const PATTERN_MYR=220, BAR_MYR=160, BAR0=SUN_TH-27*D, LY_PER_UNIT=M.GALAXY_RADIUS_PC*3.2616/M.GALAXY_RADIUS;
 const ARMS=[
- {name:'Sagittarius–Carina Arm',rs:5.6,major:false,lr:4.6},
- {name:'Perseus Arm',rs:5.6*ARM_STEP,major:true,lr:9.6},
- {name:'Norma–Outer Arm',rs:5.6*ARM_STEP*ARM_STEP,major:false,lr:11.2},
- {name:'Scutum–Centaurus Arm',rs:5.6/ARM_STEP,major:true,lr:5.4}];
+{name:'Sagittarius–Carina Arm',rs:5.6,major:false,lr:4.6},
+{name:'Perseus Arm',rs:5.6*ARM_STEP,major:true,lr:9.6},
+{name:'Norma–Outer Arm',rs:5.6*ARM_STEP*ARM_STEP,major:false,lr:11.2},
+{name:'Scutum–Centaurus Arm',rs:5.6/ARM_STEP,major:true,lr:5.4}];
 ARMS.forEach(a=>{a.th0=SUN_TH-Math.log(a.rs)*KP;});
 const armTh=(a,r)=>a.th0+Math.log(r)*KP;
 const spurTh=r=>SUN_TH+Math.log(r/7.05)*3.2;
@@ -814,38 +898,36 @@ for(let j=0;j<550;j++){const r=Math.abs(gauss())*.9;addStar(r,rand()*TAU,gauss()
 for(let j=0;j<700;j++){let x=gauss()*1.5;if(Math.abs(x)>3.6)x=Math.sign(x)*3.6*rand();const y=gauss()*.45*(1-Math.abs(x)/5);addStar(Math.hypot(x,y),Math.atan2(y,x)+BAR0,gauss()*.12,.15+rand()*.4,.6+rand(),'255,205,150',true);}
 const TRACERS=[2.6,3.8,5.2,8.8,10.5].map((r,i)=>({r,ph:i*1.3+.4,T:M.GALACTIC_PERIOD_MYR*r/M.GALAXY_RADIUS}));
 const tracerPos=(tr,t)=>{const th=tr.ph-TAU*t/tr.T;return [tr.r*Math.cos(th),tr.r*Math.sin(th),0];};
-
-/* ---------- Sky backdrop (views 01–02) ---------- */
+/* ---------- Sky backdrop ---------- */
 const lb=(l,b)=>[Math.cos(b)*Math.cos(l),Math.cos(b)*Math.sin(l),Math.sin(b)];
 const band=[],dust=[],bandStars=[];
 for(let j=0;j<520;j++){const core=j<220,l=core?gauss()*.35:(rand()*2-1)*Math.PI,near=Math.exp(-l*l/.25);band.push({d:lb(l,gauss()*(.035+.09*near)),r:.025+.05*rand()+.06*near,a:.035+.11*near+.03*rand(),img:near>.35?SPR.warm:SPR.cool});}
 for(let j=0;j<90;j++)dust.push({d:lb(gauss()*.5,gauss()*.012),r:.015+.025*rand(),a:.35});
 for(let j=0;j<500;j++){const l=rand()<.5?gauss()*.5:(rand()*2-1)*Math.PI;bandStars.push({d:lb(l,gauss()*.08),s:rand()<.08?1.4:.8,a:.2+.55*rand()});}
 const SKY_OBJ=[
- {n:'Andromeda Galaxy · 2.5 million ly',d:lb(121.17*D,-21.57*D),r:.02,stretch:2.6,rot:-.6},
- {n:'Large Magellanic Cloud · 160,000 ly',d:lb(280.47*D,-32.89*D),r:.04},
- {n:'Small Magellanic Cloud · 200,000 ly',d:lb(302.8*D,-44.3*D),r:.025}];
+{n:'Andromeda Galaxy · 2.5 million ly',d:lb(121.17*D,-21.57*D),r:.02,stretch:2.6,rot:-.6},
+{n:'Large Magellanic Cloud · 160,000 ly',d:lb(280.47*D,-32.89*D),r:.04},
+{n:'Small Magellanic Cloud · 200,000 ly',d:lb(302.8*D,-44.3*D),r:.025}];
 const HEADING=lb(90*D,0);
-
 /* ---------- S-stars around Sgr A* ---------- */
 const AU_PER_ARCSEC=8280, PREC_X=40, RG_AU=0.04245;
 const S_STARS=[
- ['S2',.1255,.884,134.2,227.0,66.1,16.05,2018.38,'#9fd0ff'],
- ['S38',.1416,.818,171.1,101.1,18.0,19.2,2003.19,'#ffd39b'],
- ['S55',.1078,.721,150.1,325.5,331.5,12.8,2009.31,'#c9b2ff'],
- ['S1',.595,.556,119.1,342.0,122.3,166,2001.8,'#a8f0d0'],
- ['S8',.404,.803,74.4,315.4,346.7,92.9,1983.6,'#f6a3a3'],
- ['S12',.299,.888,33.6,230.1,317.9,58.9,1995.6,'#e6e08f'],
- ['S13',.264,.425,24.7,74.5,245.2,49.0,2004.9,'#8fb8ff'],
- ['S14',.283,.976,100.6,226.4,334.6,55.3,2000.1,'#ffb37d'],
- ['S4714',.1026,.985,127.7,129.3,357.3,12.0,2017.29,'#ff8fd0',true]
+['S2',.1255,.884,134.2,227.0,66.1,16.05,2018.38,'#9fd0ff'],
+['S38',.1416,.818,171.1,101.1,18.0,19.2,2003.19,'#ffd39b'],
+['S55',.1078,.721,150.1,325.5,331.5,12.8,2009.31,'#c9b2ff'],
+['S1',.595,.556,119.1,342.0,122.3,166,2001.8,'#a8f0d0'],
+['S8',.404,.803,74.4,315.4,346.7,92.9,1983.6,'#f6a3a3'],
+['S12',.299,.888,33.6,230.1,317.9,58.9,1995.6,'#e6e08f'],
+['S13',.264,.425,24.7,74.5,245.2,49.0,2004.9,'#8fb8ff'],
+['S14',.283,.976,100.6,226.4,334.6,55.3,2000.1,'#ffb37d'],
+['S4714',.1026,.985,127.7,129.3,357.3,12.0,2017.29,'#ff8fd0',true]
 ].map(([name,asec,e,i,O,w,Pd,tp,color,cand])=>{const a=asec*AU_PER_ARCSEC,wr=w*D,n=O*D,ir=i*D,cw=Math.cos(wr),sw=Math.sin(wr),cn=Math.cos(n),sn=Math.sin(n),ci=Math.cos(ir),si=Math.sin(ir);
- const s={name,a,e,P:Pd,tp,color,cand:!!cand,b:a*Math.sqrt(1-e*e),Pv:[cw*cn-sw*sn*ci,cw*sn+sw*cn*ci,sw*si],Qv:[-sw*cn-cw*sn*ci,-sw*sn+cw*cn*ci,cw*si],GM:TAU*TAU*a**3/(Pd*Pd),dw:6*Math.PI*RG_AU/(a*(1-e*e))};
- s.map3=(x,y)=>[x*s.Pv[0]+y*s.Qv[0],x*s.Pv[1]+y*s.Qv[1],x*s.Pv[2]+y*s.Qv[2]];
- s.path=[];for(let k=0;k<=240;k++){const E=k/240*TAU;s.path.push([a*(Math.cos(E)-e),s.b*Math.sin(E)]);}return s;});
+const s={name,a,e,P:Pd,tp,color,cand:!!cand,b:a*Math.sqrt(1-e*e),Pv:[cw*cn-sw*sn*ci,cw*sn+sw*cn*ci,sw*si],Qv:[-sw*cn-cw*sn*ci,-sw*sn+cw*cn*ci,cw*si],GM:TAU*TAU*a**3/(Pd*Pd),dw:6*Math.PI*RG_AU/(a*(1-e*e))};
+s.map3=(x,y)=>[x*s.Pv[0]+y*s.Qv[0],x*s.Pv[1]+y*s.Qv[1],x*s.Pv[2]+y*s.Qv[2]];
+s.path=[];for(let k=0;k<=240;k++){const E=k/240*TAU;s.path.push([a*(Math.cos(E)-e),s.b*Math.sin(E)]);}return s;});
 const precAngle=(s,t)=>state.precess?s.dw*PREC_X*(t-s.tp)/s.P:0;
 function starAt(s,t){let m=TAU*(t-s.tp)/s.P;m=((m%TAU)+TAU)%TAU;let E=s.e>.8?Math.PI:m;for(let k=0;k<30;k++){const d=(E-s.e*Math.sin(E)-m)/(1-s.e*Math.cos(E));E-=d;if(Math.abs(d)<1e-12)break;}
- let x=s.a*(Math.cos(E)-s.e),y=s.b*Math.sin(E);const pa=precAngle(s,t);if(pa){const c=Math.cos(pa),sn=Math.sin(pa);const x2=x*c-y*sn;y=x*sn+y*c;x=x2;}return s.map3(x,y);}
+let x=s.a*(Math.cos(E)-s.e),y=s.b*Math.sin(E);const pa=precAngle(s,t);if(pa){const c=Math.cos(pa),sn=Math.sin(pa);const x2=x*c-y*sn;y=x*sn+y*c;x=x2;}return s.map3(x,y);}
 function starSpeed(s,p){const r=Math.hypot(p[0],p[1],p[2]);return {v:Math.sqrt(s.GM*(2/r-1/s.a))*KMS,r};}
 const cluster=Array.from({length:220},()=>({p:[gauss()*3000,gauss()*3000,gauss()*3000],a:.1+rand()*.35,r:.5+rand()*.8}));
 const HZ_MIN=2.22, HOT_R=7, HOT_T=HZ_MIN*Math.pow(HOT_R,1.5);
@@ -853,10 +935,9 @@ const hzAngle=(r,t)=>TAU*t/(HZ_MIN*Math.pow(r,1.5));
 const GAS=Array.from({length:160},()=>({r:6.2+Math.pow(rand(),1.4)*11,ph:rand()*TAU,z:gauss()*.5,a:.05+rand()*.12,s:.6+rand()*1.2}));
 const ring3=(r,n=120)=>{const p=[];for(let i=0;i<=n;i++){const a=i/n*TAU;p.push([r*Math.cos(a),r*Math.sin(a),0]);}return p;};
 const SGR_ZOOM={
- inner:{title:'Sagittarius A*. Where orbits take years.',caption:'Stars within a few light-weeks of our galaxy’s black hole. Distances to scale.',info:'S2’s closest pass: <strong>≈120 AU</strong>, about 4× Neptune’s distance from the Sun. S4714 may swing in to ≈13 AU (a disputed candidate).<br>The clock here runs in <strong>years</strong>.',say:'Sagittarius A* close-up, with a calendar-year clock.'},
- wide:{title:'The S-cluster. A swarm of orbits.',caption:'Nine tracked stars on orbits tilted every which way, all around one invisible mass.',info:'Unlike the flat Solar System, these orbits point in <strong>random directions</strong>. S1 needs ≈166 years per lap; S55 only ≈13.<br>Together they weigh the black hole: <strong>4.3 million Suns</strong>.',say:'Whole S-cluster, nine stars.'},
- horizon:{title:'At the edge of the event horizon.',caption:'Flares circle Sgr A* in under an hour. Distances in gravitational radii (1 Rg ≈ 6.4 million km).',info:'In 2018 the GRAVITY instrument tracked flares circling at ≈7–10 Rg, about where <strong>Mercury</strong> would orbit if our Sun sat here, but taking ≈40 minutes instead of 88 days.<br>The clock here runs in <strong>minutes</strong>.',say:'Event-horizon close-up, with a minutes clock.'}};
-
+inner:{title:'Sagittarius A*. Where orbits take years.',caption:'Stars within a few light-weeks of our galaxy’s black hole. Distances to scale.',info:'S2’s closest pass: <strong>≈120 AU</strong>, about 4× Neptune’s distance from the Sun. S4714 may swing in to ≈13 AU (a disputed candidate).<br>The clock here runs in <strong>years</strong>.',say:'Sagittarius A* close-up, with a calendar-year clock.'},
+wide:{title:'The S-cluster. A swarm of orbits.',caption:'Nine tracked stars on orbits tilted every which way, all around one invisible mass.',info:'Unlike the flat Solar System, these orbits point in <strong>random directions</strong>. S1 needs ≈166 years per lap; S55 only ≈13.<br>Together they weigh the black hole: <strong>4.3 million Suns</strong>.',say:'Whole S-cluster, nine stars.'},
+horizon:{title:'At the edge of the event horizon.',caption:'Flares circle Sgr A* in under an hour. Distances in gravitational radii (1 Rg ≈ 6.4 million km).',info:'In 2018 the GRAVITY instrument tracked flares circling at ≈7–10 Rg, about where <strong>Mercury</strong> would orbit if our Sun sat here, but taking ≈40 minutes instead of 88 days.<br>The clock here runs in <strong>minutes</strong>.',say:'Event-horizon close-up, with a minutes clock.'}};
 /* ---------- Planet orbit lookup ---------- */
 const LUT_SIZE=2048;
 const lut=new Map();
@@ -868,7 +949,6 @@ function planets(){return state.set==='all'?P:state.set==='inner'?P.slice(0,4):P
 function drift(){return state.scene==='journey'?(state.scale==='physical'?M.SUN_AU_PER_YEAR:2):0;}
 const isLocal=()=>state.scene==='journey'||state.scene==='solar';
 const isHorizon=()=>state.scene==='sgr'&&state.sgrZoom==='horizon';
-
 function fitProjection(){const ca=Math.cos(state.az),sa=Math.sin(state.az),ce=Math.cos(state.el),se=Math.sin(state.el);const right=[-sa,ca,0],up=[-se*ca,-se*sa,ce],front=[ce*ca,ce*sa,se];let center,extentX,extentY;
 if(state.scene==='companions'){projection=fitCraftProjection(right,up,front);return;}
 if(state.scene==='galaxy'){center=[0,0,0];extentX=23.6;extentY=23.6*Math.max(.36,Math.abs(se))+3.1;}
@@ -881,38 +961,36 @@ function polygon(points,fill,stroke){ctx.beginPath();points.forEach((p,i)=>{cons
 function background(){ctx.fillStyle='#040609';ctx.fillRect(0,0,W,H);const g=ctx.createRadialGradient(W*.6,H*.42,10,W*.6,H*.42,Math.max(W,H)*.65);g.addColorStop(0,'#0e131c');g.addColorStop(.6,'#070a10');g.addColorStop(1,'#040609');ctx.fillStyle=g;ctx.fillRect(0,0,W,H);for(const s of stars){ctx.fillStyle='rgba(225,218,204,'+s.a+')';ctx.beginPath();ctx.arc(s.x*W,s.y*H,s.r,0,TAU);ctx.fill();}}
 function textAt(text,p,color='#b9b2a3',size=10,dx=0,dy=0){const q=project(p);ctx.font=size+'px '+FONT;const width=ctx.measureText(text).width;const x=clamp(q.x+dx,10,W-width-10),y=clamp(q.y+dy,110,H-68);ctx.fillStyle=color;ctx.fillText(text,x,y);}
 function screenText(text,x,y,color,size=9,weight=''){ctx.font=weight+size+'px '+FONT;const w=ctx.measureText(text).width;ctx.fillStyle=color;ctx.fillText(text,clamp(x,8,W-w-8),clamp(y,110,H-66));}
-
 /* ---------- Sagittarius A* icon ---------- */
 function skyPoint(d){const depth=-dot(d,projection.front);if(depth<.06)return null;const f=Math.min(W,H)*.72;return {x:W*.5+f*dot(d,projection.right)/depth,y:H*.5-f*dot(d,projection.up)/depth};}
 function drawBlackHole(x,y,R,label,sub){const t=performance.now()/1000;ctx.save();
- const g=ctx.createRadialGradient(x,y,R*.8,x,y,R*6);g.addColorStop(0,'rgba(255,170,95,.42)');g.addColorStop(.3,'rgba(255,120,60,.12)');g.addColorStop(1,'rgba(255,100,50,0)');ctx.fillStyle=g;ctx.beginPath();ctx.arc(x,y,R*6,0,TAU);ctx.fill();
- ctx.translate(x,y);ctx.rotate(-.2);
- const lg=ctx.createLinearGradient(-R*3,0,R*3,0);lg.addColorStop(0,'rgba(255,240,215,.95)');lg.addColorStop(.5,'rgba(255,170,85,.85)');lg.addColorStop(1,'rgba(200,80,40,.45)');
- const disc=(a0,a1)=>{for(const [k,w,al] of [[1.9,.55,.95],[2.55,.42,.55],[3.2,.3,.3]]){ctx.globalAlpha=al;ctx.strokeStyle=lg;ctx.lineWidth=R*w;ctx.beginPath();ctx.ellipse(0,0,R*k,R*k*.22,0,a0,a1);ctx.stroke();}ctx.globalAlpha=1;};
- ctx.globalAlpha=.85;ctx.strokeStyle=lg;ctx.lineWidth=R*.32;ctx.beginPath();ctx.ellipse(0,0,R*1.45,R*1.35,0,Math.PI,TAU);ctx.stroke();ctx.globalAlpha=1;
- disc(Math.PI,TAU);
- ctx.fillStyle='#000';ctx.beginPath();ctx.arc(0,0,R,0,TAU);ctx.fill();
- ctx.strokeStyle='rgba(255,225,180,.9)';ctx.lineWidth=Math.max(1,R*.08);ctx.beginPath();ctx.arc(0,0,R*1.05,0,TAU);ctx.stroke();
- disc(0,Math.PI);
- for(let k=0;k<5;k++){const a=t*.9+k*TAU/5,hx=R*2.2*Math.cos(a),hy=R*.48*Math.sin(a);if(Math.sin(a)<0&&Math.abs(hx)<R*1.1)continue;sprite(SPR.white,hx,hy,R*.5,.28);}
- ctx.restore();
- if(label){ctx.font='500 11px '+FONT;const w1=ctx.measureText('Sagittarius A*').width;ctx.font='9px '+FONT;const w2=sub?ctx.measureText(sub).width:0,w=Math.max(w1,w2);let lx=x+R*3.6;if(lx+w>W-10)lx=x-R*3.6-w;const ly=clamp(y-2,114,H-80);
+const g=ctx.createRadialGradient(x,y,R*.8,x,y,R*6);g.addColorStop(0,'rgba(255,170,95,.42)');g.addColorStop(.3,'rgba(255,120,60,.12)');g.addColorStop(1,'rgba(255,100,50,0)');ctx.fillStyle=g;ctx.beginPath();ctx.arc(x,y,R*6,0,TAU);ctx.fill();
+ctx.translate(x,y);ctx.rotate(-.2);
+const lg=ctx.createLinearGradient(-R*3,0,R*3,0);lg.addColorStop(0,'rgba(255,240,215,.95)');lg.addColorStop(.5,'rgba(255,170,85,.85)');lg.addColorStop(1,'rgba(200,80,40,.45)');
+const disc=(a0,a1)=>{for(const [k,w,al] of [[1.9,.55,.95],[2.55,.42,.55],[3.2,.3,.3]]){ctx.globalAlpha=al;ctx.strokeStyle=lg;ctx.lineWidth=R*w;ctx.beginPath();ctx.ellipse(0,0,R*k,R*k*.22,0,a0,a1);ctx.stroke();}ctx.globalAlpha=1;};
+ctx.globalAlpha=.85;ctx.strokeStyle=lg;ctx.lineWidth=R*.32;ctx.beginPath();ctx.ellipse(0,0,R*1.45,R*1.35,0,Math.PI,TAU);ctx.stroke();ctx.globalAlpha=1;
+disc(Math.PI,TAU);
+ctx.fillStyle='#000';ctx.beginPath();ctx.arc(0,0,R,0,TAU);ctx.fill();
+ctx.strokeStyle='rgba(255,225,180,.9)';ctx.lineWidth=Math.max(1,R*.08);ctx.beginPath();ctx.arc(0,0,R*1.05,0,TAU);ctx.stroke();
+disc(0,Math.PI);
+for(let k=0;k<5;k++){const a=t*.9+k*TAU/5,hx=R*2.2*Math.cos(a),hy=R*.48*Math.sin(a);if(Math.sin(a)<0&&Math.abs(hx)<R*1.1)continue;sprite(SPR.white,hx,hy,R*.5,.28);}
+ctx.restore();
+if(label){ctx.font='500 11px '+FONT;const w1=ctx.measureText('Sagittarius A*').width;ctx.font='9px '+FONT;const w2=sub?ctx.measureText(sub).width:0,w=Math.max(w1,w2);let lx=x+R*3.6;if(lx+w>W-10)lx=x-R*3.6-w;const ly=clamp(y-2,114,H-80);
   ctx.fillStyle='rgba(4,6,9,.7)';ctx.fillRect(lx-5,ly-13,w+10,sub?30:17);ctx.font='500 11px '+FONT;ctx.fillStyle='#f0c78a';ctx.fillText('Sagittarius A*',lx,ly);if(sub){ctx.font='9px '+FONT;ctx.fillStyle='#b3a796';ctx.fillText(sub,lx,ly+13);}}
 }
 function edgeMarker(){const d=[1,0,0],sx=dot(d,projection.right),sy=-dot(d,projection.up),len=Math.hypot(sx,sy);if(len<1e-4)return;const ux=sx/len,uy=sy/len,cx=W*.5,cy=H*.54,L=26,R=W-26,T=118,B=H-86;let k=1e9;if(ux>1e-6)k=Math.min(k,(R-cx)/ux);if(ux<-1e-6)k=Math.min(k,(L-cx)/ux);if(uy>1e-6)k=Math.min(k,(B-cy)/uy);if(uy<-1e-6)k=Math.min(k,(T-cy)/uy);
- const x=cx+ux*k,y=cy+uy*k,a=Math.atan2(uy,ux);ctx.fillStyle='rgba(233,183,101,.9)';ctx.beginPath();ctx.moveTo(x+7*Math.cos(a),y+7*Math.sin(a));ctx.lineTo(x+7*Math.cos(a+2.4),y+7*Math.sin(a+2.4));ctx.lineTo(x+7*Math.cos(a-2.4),y+7*Math.sin(a-2.4));ctx.closePath();ctx.fill();
- ctx.font='9px '+FONT;const txt='Sagittarius A* (galactic centre)',tw=ctx.measureText(txt).width;const tx=clamp(x-ux*14-tw*(ux>.2?1:ux<-.2?0:.5),10,W-tw-10),ty=clamp(y-uy*14+3,114,H-70);ctx.fillStyle='rgba(240,199,138,.85)';ctx.fillText(txt,tx,ty);}
+const x=cx+ux*k,y=cy+uy*k,a=Math.atan2(uy,ux);ctx.fillStyle='rgba(233,183,101,.9)';ctx.beginPath();ctx.moveTo(x+7*Math.cos(a),y+7*Math.sin(a));ctx.lineTo(x+7*Math.cos(a+2.4),y+7*Math.sin(a+2.4));ctx.lineTo(x+7*Math.cos(a-2.4),y+7*Math.sin(a-2.4));ctx.closePath();ctx.fill();
+ctx.font='9px '+FONT;const txt='Sagittarius A* (galactic centre)',tw=ctx.measureText(txt).width;const tx=clamp(x-ux*14-tw*(ux>.2?1:ux<-.2?0:.5),10,W-tw-10),ty=clamp(y-uy*14+3,114,H-70);ctx.fillStyle='rgba(240,199,138,.85)';ctx.fillText(txt,tx,ty);}
 function drawSky(){if(!state.sgr)return;const f=Math.min(W,H)*.72;
- for(const b of band){const q=skyPoint(b.d);if(!q)continue;const r=b.r*f;if(q.x<-r||q.x>W+r||q.y<-r||q.y>H+r)continue;sprite(b.img,q.x,q.y,r,b.a);}
- for(const b of dust){const q=skyPoint(b.d);if(!q)continue;const r=b.r*f;if(q.x<-r||q.x>W+r||q.y<-r||q.y>H+r)continue;sprite(SPR.dark,q.x,q.y,r,b.a);}
- for(const s of bandStars){const q=skyPoint(s.d);if(!q||q.x<0||q.x>W||q.y<0||q.y>H)continue;ctx.fillStyle='rgba(225,225,232,'+s.a+')';ctx.fillRect(q.x,q.y,s.s,s.s);}
- for(const o of SKY_OBJ){const q=skyPoint(o.d);if(!q||q.x<20||q.x>W-20||q.y<110||q.y>H-70)continue;const r=o.r*f;ctx.save();ctx.translate(q.x,q.y);if(o.stretch){ctx.rotate(o.rot);ctx.scale(o.stretch,1);}sprite(SPR.cool,0,0,r,.6);sprite(SPR.white,0,0,r*.28,.65);ctx.restore();screenText(o.n,q.x+r*(o.stretch?1.6:1.1)+4,q.y+3,'rgba(190,205,230,.85)');}
- const hd=skyPoint(HEADING);if(hd&&hd.x>20&&hd.x<W-20&&hd.y>110&&hd.y<H-70){ctx.strokeStyle='rgba(233,183,101,.8)';ctx.lineWidth=1;ctx.beginPath();ctx.arc(hd.x,hd.y,6,0,TAU);ctx.moveTo(hd.x-10,hd.y);ctx.lineTo(hd.x+10,hd.y);ctx.moveTo(hd.x,hd.y-10);ctx.lineTo(hd.x,hd.y+10);ctx.stroke();screenText('Heading: toward Cygnus',hd.x+12,hd.y-8,'rgba(233,183,101,.9)');}
- const gc=skyPoint([1,0,0]);
- if(gc&&gc.x>30&&gc.x<W-30&&gc.y>104&&gc.y<H-75){const sun=project([0,0,0]);ctx.setLineDash([3,6]);ctx.strokeStyle='rgba(233,170,100,.3)';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(sun.x,sun.y);ctx.lineTo(gc.x,gc.y);ctx.stroke();ctx.setLineDash([]);
+for(const b of band){const q=skyPoint(b.d);if(!q)continue;const r=b.r*f;if(q.x<-r||q.x>W+r||q.y<-r||q.y>H+r)continue;sprite(b.img,q.x,q.y,r,b.a);}
+for(const b of dust){const q=skyPoint(b.d);if(!q)continue;const r=b.r*f;if(q.x<-r||q.x>W+r||q.y<-r||q.y>H+r)continue;sprite(SPR.dark,q.x,q.y,r,b.a);}
+for(const s of bandStars){const q=skyPoint(s.d);if(!q||q.x<0||q.x>W||q.y<0||q.y>H)continue;ctx.fillStyle='rgba(225,225,232,'+s.a+')';ctx.fillRect(q.x,q.y,s.s,s.s);}
+for(const o of SKY_OBJ){const q=skyPoint(o.d);if(!q||q.x<20||q.x>W-20||q.y<110||q.y>H-70)continue;const r=o.r*f;ctx.save();ctx.translate(q.x,q.y);if(o.stretch){ctx.rotate(o.rot);ctx.scale(o.stretch,1);}sprite(SPR.cool,0,0,r,.6);sprite(SPR.white,0,0,r*.28,.65);ctx.restore();screenText(o.n,q.x+r*(o.stretch?1.6:1.1)+4,q.y+3,'rgba(190,205,230,.85)');}
+const hd=skyPoint(HEADING);if(hd&&hd.x>20&&hd.x<W-20&&hd.y>110&&hd.y<H-70){ctx.strokeStyle='rgba(233,183,101,.8)';ctx.lineWidth=1;ctx.beginPath();ctx.arc(hd.x,hd.y,6,0,TAU);ctx.moveTo(hd.x-10,hd.y);ctx.lineTo(hd.x+10,hd.y);ctx.moveTo(hd.x,hd.y-10);ctx.lineTo(hd.x,hd.y+10);ctx.stroke();screenText('Heading: toward Cygnus',hd.x+12,hd.y-8,'rgba(233,183,101,.9)');}
+const gc=skyPoint([1,0,0]);
+if(gc&&gc.x>30&&gc.x<W-30&&gc.y>104&&gc.y<H-75){const sun=project([0,0,0]);ctx.setLineDash([3,6]);ctx.strokeStyle='rgba(233,170,100,.3)';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(sun.x,sun.y);ctx.lineTo(gc.x,gc.y);ctx.stroke();ctx.setLineDash([]);
   drawBlackHole(gc.x,gc.y,clamp(Math.min(W,H)*.02,6,12),true,'≈26,700 light-years away');}
- else edgeMarker();}
-
+else edgeMarker();}
 /* ---------- Local scenes ---------- */
 function planeGeometry(){if(!state.planes)return;const ps=planets();const R=Math.max(...ps.map(p=>(state.scale==='physical'?p.a:Math.sqrt(p.a))))*1.13;const travel=drift()*state.history;const x=R*.94;const near=R*.9,far=-travel-R*.5;polygon([[-x,far,0],[x,far,0],[x,near,0],[-x,near,0]],'rgba(160,150,130,.022)','rgba(200,190,170,.12)');for(let k=1;k<6;k++){const u=-x+2*x*k/6;screenPath([[u,far,0],[u,near,0]],'#a49c8c',.6,.08);const v=far+(near-far)*k/6;screenPath([[-x,v,0],[x,v,0]],'#a49c8c',.6,.08);}
 const circle=[];for(let i=0;i<=96;i++)circle.push(M.toGalactic([R*Math.cos(TAU*i/96),R*Math.sin(TAU*i/96),0]));polygon(circle,'rgba(233,183,101,.025)','rgba(233,183,101,.22)');}
@@ -936,178 +1014,176 @@ function drawLocal(){planeGeometry();guides();motionTrails();const bodies=planet
 if(state.scene==='journey'){const R=Math.max(...planets().map(p=>state.scale==='physical'?p.a:Math.sqrt(p.a)));drawArrow([0,R*.6,0],[0,R*1.05,0],'rgba(233,183,101,.6)');}
 drawCompass();}
 function drawCompass(){const origin={x:W-66,y:134},length=25;const axes=[{v:[1,0,0],n:'to Sgr A*',c:'#e0a77a'},{v:[0,1,0],n:'travel',c:'#e9b765'},{v:[0,0,1],n:'z',c:'#86d4cc'}];ctx.font='8.5px '+FONT;for(const a of axes){const dx=dot(a.v,projection.right)*length,dy=-dot(a.v,projection.up)*length;ctx.strokeStyle=rgba(a.c,.6);ctx.beginPath();ctx.moveTo(origin.x,origin.y);ctx.lineTo(origin.x+dx,origin.y+dy);ctx.stroke();ctx.fillStyle=a.c;const tw=ctx.measureText(a.n).width;ctx.fillText(a.n,Math.min(origin.x+dx+3,W-tw-6),origin.y+dy+3);}}
-
 /* ---------- Milky Way scene (time 0 = today) ---------- */
 const MILESTONES=[{t:-538,text:'538 Myr ago · Cambrian explosion',dy:16},{t:-230,text:'230 Myr ago (1 galactic year) · first dinosaurs',dy:16},{t:-66,text:'66 Myr ago · dinosaurs end',dy:-6},{t:0,text:'Today',dy:-6}];
 const sunPos=t=>M.galaxyPosition(t,state.bob?15:0,state.epi);
 function drawMilestones(){for(const m of MILESTONES){const age=state.galTime-m.t;if(age<4||age>Math.max(700,state.galTrail))continue;const p=sunPos(m.t),q=project(p),fade=age>state.galTrail+.5?.45:1;
- ctx.globalAlpha=fade;ctx.strokeStyle='rgba(240,210,160,.85)';ctx.lineWidth=1;ctx.beginPath();ctx.arc(q.x,q.y,4.5,0,TAU);ctx.stroke();ctx.globalAlpha=1;
- if(state.bob)screenPath([[p[0],p[1],0],p],'#e8d3a8',.7,.35*fade,false,[1,3]);textAt(m.text,p,rgba('#e9d6ae',.9*fade),9,9,m.dy);}}
+ctx.globalAlpha=fade;ctx.strokeStyle='rgba(240,210,160,.85)';ctx.lineWidth=1;ctx.beginPath();ctx.arc(q.x,q.y,4.5,0,TAU);ctx.stroke();ctx.globalAlpha=1;
+if(state.bob)screenPath([[p[0],p[1],0],p],'#e8d3a8',.7,.35*fade,false,[1,3]);textAt(m.text,p,rgba('#e9d6ae',.9*fade),9,9,m.dy);}}
 function drawTracers(t){for(const tr of TRACERS){const pts=[];for(let i=0;i<=40;i++)pts.push(tracerPos(tr,t-40*(1-i/40)));fadedTrail(pts,'#9fe3ff',1.3,true);const q=project(tracerPos(tr,t));glow(q,3,'#9fe3ff',.6);ctx.fillStyle='#c8f2ff';ctx.beginPath();ctx.arc(q.x,q.y,2.6,0,TAU);ctx.fill();screenText('lap: '+fmt(tr.T,0)+' Myr',q.x+7,q.y-6,'rgba(170,225,255,.85)',8.5);}}
 function drawArmNames(pat,bar){for(const a of ARMS){const th=armTh(a,a.lr)+pat;textAt(a.name,[a.lr*Math.cos(th),a.lr*Math.sin(th),0],a.major?'rgba(190,215,255,.92)':'rgba(170,195,230,.75)',9,4,-4);}
- const bt=BAR0+bar;textAt('Central bar',[3.9*Math.cos(bt),3.9*Math.sin(bt),0],'rgba(255,214,165,.85)',9,4,0);
- const st=spurTh(6.2)+pat;textAt('Orion Spur · our neighbourhood',[6.2*Math.cos(st),6.2*Math.sin(st),0],'rgba(200,225,255,.8)',9,-70,18);}
+const bt=BAR0+bar;textAt('Central bar',[3.9*Math.cos(bt),3.9*Math.sin(bt),0],'rgba(255,214,165,.85)',9,4,0);
+const st=spurTh(6.2)+pat;textAt('Orion Spur · our neighbourhood',[6.2*Math.cos(st),6.2*Math.sin(st),0],'rgba(200,225,255,.8)',9,-70,18);}
 function drawGalScale(){const px=10000/LY_PER_UNIT*projection.scale,x=W-30-px,y=H-76;ctx.strokeStyle='rgba(220,212,195,.7)';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(x,y);ctx.lineTo(x+px,y);ctx.moveTo(x,y-4);ctx.lineTo(x,y+4);ctx.moveTo(x+px,y-4);ctx.lineTo(x+px,y+4);ctx.stroke();ctx.font='9px '+FONT;ctx.fillStyle='rgba(220,212,195,.85)';const txt='10,000 light-years',tw=ctx.measureText(txt).width;ctx.fillText(txt,x+px-tw,y-7);}
 function drawGalaxy(){const R=M.GALAXY_RADIUS,t=state.galTime;
- const disc=[];for(let i=0;i<=100;i++)disc.push([11.8*Math.cos(i*TAU/100),11.8*Math.sin(i*TAU/100),0]);polygon(disc,'rgba(160,150,130,.025)','rgba(200,190,170,.08)');
- const pat=state.galRotate?-TAU*t/PATTERN_MYR:0,bar=state.galRotate?-TAU*t/BAR_MYR:0;
- const cp=Math.cos(pat),sp=Math.sin(pat),cb=Math.cos(bar),sb=Math.sin(bar),zs=clamp(state.zoom,.5,1.7);
- const center=project([0,0,0]);glow(center,26*state.zoom,'#f6d8ae',.25);
- for(const s of GAL){const cA=s.bar?cb:cp,sA=s.bar?sb:sp;const q=project([s.r*(s.ct*cA-s.st*sA),s.r*(s.st*cA+s.ct*sA),s.z]);if(q.x<-2||q.x>W+2||q.y<-2||q.y>H+2)continue;const d=s.s*zs;ctx.fillStyle=s.f;ctx.fillRect(q.x-d/2,q.y-d/2,d,d);}
- for(const h of HII){const th=h.th+pat,q=project([h.r*Math.cos(th),h.r*Math.sin(th),0]);if(q.x<-20||q.x>W+20||q.y<-20||q.y>H+20)continue;sprite(SPR.pink,q.x,q.y,Math.max(2.5,h.s*projection.scale),.45);}
- const orbit=[];for(let i=0;i<=180;i++)orbit.push([R*Math.cos(i*TAU/180),R*Math.sin(i*TAU/180),0]);screenPath(orbit,'#b0a898',1,.22,false,[3,5]);
- if(state.tracers)drawTracers(t);
- if(state.armNames)drawArmNames(pat,bar);
- const span=state.galTrail,n=span>300?2400:900,points=[];for(let i=0;i<=n;i++)points.push(sunPos(t-span+span*i/n));fadedTrail(points,'#e9c98a',1.8,true);
- const pos=sunPos(t);
- screenPath([[pos[0],pos[1],0],[0,0,0]],'#e9b27a',.8,.35,false,[2,5]);textAt('≈26,700 light-years',[pos[0]*.5,pos[1]*.5,0],'#c9a687',9,4,-6);
- drawBlackHole(center.x,center.y,clamp(4.5*Math.sqrt(state.zoom),3.5,10),false);textAt('Sagittarius A*',[0,0,0],'#f0c78a',10,14,22);
- drawMilestones();
- if(state.bob)screenPath([[pos[0],pos[1],0],pos],'#d9c08e',1,.65,false,[2,3]);const b={id:'sun',name:'Sun + all planets',label:'Sun + all planets',color:'#ffce83',r:7,p:pos};drawBody(b);bodyLabels([b]);
- drawGalScale();drawVerticalInset();}
+const disc=[];for(let i=0;i<=100;i++)disc.push([11.8*Math.cos(i*TAU/100),11.8*Math.sin(i*TAU/100),0]);polygon(disc,'rgba(160,150,130,.025)','rgba(200,190,170,.08)');
+const pat=state.galRotate?-TAU*t/PATTERN_MYR:0,bar=state.galRotate?-TAU*t/BAR_MYR:0;
+const cp=Math.cos(pat),sp=Math.sin(pat),cb=Math.cos(bar),sb=Math.sin(bar),zs=clamp(state.zoom,.5,1.7);
+const center=project([0,0,0]);glow(center,26*state.zoom,'#f6d8ae',.25);
+for(const s of GAL){const cA=s.bar?cb:cp,sA=s.bar?sb:sp;const q=project([s.r*(s.ct*cA-s.st*sA),s.r*(s.st*cA+s.ct*sA),s.z]);if(q.x<-2||q.x>W+2||q.y<-2||q.y>H+2)continue;const d=s.s*zs;ctx.fillStyle=s.f;ctx.fillRect(q.x-d/2,q.y-d/2,d,d);}
+for(const h of HII){const th=h.th+pat,q=project([h.r*Math.cos(th),h.r*Math.sin(th),0]);if(q.x<-20||q.x>W+20||q.y<-20||q.y>H+20)continue;sprite(SPR.pink,q.x,q.y,Math.max(2.5,h.s*projection.scale),.45);}
+const orbit=[];for(let i=0;i<=180;i++)orbit.push([R*Math.cos(i*TAU/180),R*Math.sin(i*TAU/180),0]);screenPath(orbit,'#b0a898',1,.22,false,[3,5]);
+if(state.tracers)drawTracers(t);
+if(state.armNames)drawArmNames(pat,bar);
+const span=state.galTrail,n=span>300?2400:900,points=[];for(let i=0;i<=n;i++)points.push(sunPos(t-span+span*i/n));fadedTrail(points,'#e9c98a',1.8,true);
+const pos=sunPos(t);
+screenPath([[pos[0],pos[1],0],[0,0,0]],'#e9b27a',.8,.35,false,[2,5]);textAt('≈26,700 light-years',[pos[0]*.5,pos[1]*.5,0],'#c9a687',9,4,-6);
+drawBlackHole(center.x,center.y,clamp(4.5*Math.sqrt(state.zoom),3.5,10),false);textAt('Sagittarius A*',[0,0,0],'#f0c78a',10,14,22);
+drawMilestones();
+if(state.bob)screenPath([[pos[0],pos[1],0],pos],'#d9c08e',1,.65,false,[2,3]);const b={id:'sun',name:'Sun + all planets',label:'Sun + all planets',color:'#ffce83',r:7,p:pos};drawBody(b);bodyLabels([b]);
+drawGalScale();drawVerticalInset();}
 function drawVerticalInset(){if(!state.bob)return;const width=Math.min(170,W*.36),height=37,x=26,y=H-108;ctx.fillStyle='rgba(4,6,9,.78)';ctx.fillRect(x-8,y-20,width+16,height+32);ctx.strokeStyle='rgba(200,190,170,.15)';ctx.strokeRect(x-8,y-20,width+16,height+32);ctx.font='8px '+FONT;ctx.fillStyle='#a19c90';ctx.fillText('ONE VERTICAL CYCLE · '+M.VERTICAL_PERIOD_MYR+' MYR',x,y-7);ctx.strokeStyle='#3b3f46';ctx.lineWidth=.7;ctx.beginPath();ctx.moveTo(x,y+height/2);ctx.lineTo(x+width,y+height/2);ctx.stroke();ctx.beginPath();for(let i=0;i<=120;i++){const px=x+width*i/120,py=y+height/2-Math.sin(i/120*TAU)*height*.43;if(i)ctx.lineTo(px,py);else ctx.moveTo(px,py);}ctx.strokeStyle='#b8a57c';ctx.lineWidth=1;ctx.stroke();const phase=((state.galTime/M.VERTICAL_PERIOD_MYR+M.Z_PHASE/TAU)%1+1)%1;ctx.fillStyle='#e9b765';ctx.beginPath();ctx.arc(x+width*phase,y+height/2-Math.sin(phase*TAU)*height*.43,3,0,TAU);ctx.fill();}
-
 /* ---------- Sagittarius A*: stars ---------- */
 function drawScaleBar(){let L=50;for(const o of [50,100,250,500,1000,2000,5000])if(o*projection.scale<=170)L=o;const px=L*projection.scale,x=26,y=H-114;ctx.strokeStyle='#cbb894';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(x,y);ctx.lineTo(x+px,y);ctx.moveTo(x,y-4);ctx.lineTo(x,y+4);ctx.moveTo(x+px,y-4);ctx.lineTo(x+px,y+4);ctx.stroke();ctx.font='9px '+FONT;ctx.fillStyle='#cbb894';ctx.fillText(fmt(L,0)+' AU ≈ '+Math.round(L/30.07)+'× Neptune’s distance from the Sun',x,y-8);}
 function drawStars(){const t=state.sgrTime,wide=state.sgrZoom==='wide',c=project([0,0,0]);const g=ctx.createRadialGradient(c.x,c.y,0,c.x,c.y,Math.min(W,H)*.45);g.addColorStop(0,'rgba(255,170,100,.10)');g.addColorStop(1,'rgba(255,170,100,0)');ctx.fillStyle=g;ctx.fillRect(0,0,W,H);
- for(const s of cluster){const q=project(s.p);if(q.x<0||q.x>W||q.y<0||q.y>H)continue;ctx.fillStyle='rgba(235,220,200,'+s.a+')';ctx.fillRect(q.x,q.y,s.r,s.r);}
- for(const s of S_STARS){if(state.sOrbits){const pa=precAngle(s,t),cd=Math.cos(pa),sd=Math.sin(pa);screenPath(s.path.map(([x,y])=>s.map3(x*cd-y*sd,x*sd+y*cd)),s.color,.8,s.cand?.16:.26,true,[3,4]);}
+for(const s of cluster){const q=project(s.p);if(q.x<0||q.x>W||q.y<0||q.y>H)continue;ctx.fillStyle='rgba(235,220,200,'+s.a+')';ctx.fillRect(q.x,q.y,s.r,s.r);}
+for(const s of S_STARS){if(state.sOrbits){const pa=precAngle(s,t),cd=Math.cos(pa),sd=Math.sin(pa);screenPath(s.path.map(([x,y])=>s.map3(x*cd-y*sd,x*sd+y*cd)),s.color,.8,s.cand?.16:.26,true,[3,4]);}
   if(state.sTrails){const span=state.precess?s.P*3:s.P*.6,n=state.precess?1200:(s.name==='S2'?1000:500),pts=[];for(let i=0;i<=n;i++)pts.push(starAt(s,t-span*(1-i/n)));fadedTrail(pts,s.color,s.name==='S2'?2:1.2,s.name==='S2');}}
- const s2=S_STARS[0],pq=project(starAt(s2,s2.tp+s2.P*Math.round((t-s2.tp)/s2.P)));ctx.strokeStyle=rgba(s2.color,.7);ctx.lineWidth=1;ctx.beginPath();ctx.arc(pq.x,pq.y,3.5,0,TAU);ctx.stroke();
- const bodies=S_STARS.map(s=>{const p=starAt(s,t);return {s,p,q:project(p),...starSpeed(s,p)};}).sort((a,b)=>a.q.z-b.q.z);
- drawBlackHole(c.x,c.y,clamp(9*Math.sqrt(state.zoom)*(wide?.75:1),6,16),true,'4.3 million Suns');
- for(const b of bodies){if(b.q.x<-10||b.q.x>W+10||b.q.y<-10||b.q.y>H+10)continue;glow(b.q,4,b.s.color,.7);ctx.fillStyle=b.s.color;ctx.beginPath();ctx.arc(b.q.x,b.q.y,3.2,0,TAU);ctx.fill();
+const s2=S_STARS[0],pq=project(starAt(s2,s2.tp+s2.P*Math.round((t-s2.tp)/s2.P)));ctx.strokeStyle=rgba(s2.color,.7);ctx.lineWidth=1;ctx.beginPath();ctx.arc(pq.x,pq.y,3.5,0,TAU);ctx.stroke();
+const bodies=S_STARS.map(s=>{const p=starAt(s,t);return {s,p,q:project(p),...starSpeed(s,p)};}).sort((a,b)=>a.q.z-b.q.z);
+drawBlackHole(c.x,c.y,clamp(9*Math.sqrt(state.zoom)*(wide?.75:1),6,16),true,'4.3 million Suns');
+for(const b of bodies){if(b.q.x<-10||b.q.x>W+10||b.q.y<-10||b.q.y>H+10)continue;glow(b.q,4,b.s.color,.7);ctx.fillStyle=b.s.color;ctx.beginPath();ctx.arc(b.q.x,b.q.y,3.2,0,TAU);ctx.fill();
   const txt=b.s.name+(b.s.cand?' (candidate)':'')+(state.sLabels?' · '+fmt(b.v,0)+' km/s':'');ctx.font='10px '+FONT;const tw=ctx.measureText(txt).width,x=clamp(b.q.x+9,8,W-tw-8),y=clamp(b.q.y-7,112,H-64);ctx.fillStyle='rgba(4,6,9,.72)';ctx.fillRect(x-3,y-10,tw+6,14);ctx.fillStyle=b.s.color;ctx.fillText(txt,x,y);}
- if(state.precess)screenText('Precession exaggerated ×40 (real: ≈12′ per orbit for S2)',26,H-132,'rgba(240,199,160,.85)');
- drawScaleBar();}
-
+if(state.precess)screenText('Precession exaggerated ×40 (real: ≈12′ per orbit for S2)',26,H-132,'rgba(240,199,160,.85)');
+drawScaleBar();}
 /* ---------- Sagittarius A*: event-horizon close-up ---------- */
 function drawHorizon(){const t=state.hzTime,c=project([0,0,0]),k=projection.scale;
- const g=ctx.createRadialGradient(c.x,c.y,0,c.x,c.y,18*k);g.addColorStop(0,'rgba(255,150,80,.16)');g.addColorStop(1,'rgba(255,150,80,0)');ctx.fillStyle=g;ctx.fillRect(0,0,W,H);
- screenPath(ring3(9.12),'#b0a898',.8,.4,true,[2,4]);textAt('Mercury’s orbit, if our Sun sat here (9 Rg)',[9.12*Math.cos(-.7),9.12*Math.sin(-.7),0],'rgba(200,192,178,.85)',9,6,4);
- screenPath(ring3(6),'#86d4cc',.9,.5,true,[4,4]);textAt('Innermost stable orbit · 6 Rg',[6*Math.cos(2.3),6*Math.sin(2.3),0],'rgba(150,220,210,.9)',9,-170,0);
- screenPath(ring3(3),'#ffd2a6',.8,.45,true,[1,3]);
- const gas=GAS.map(b=>{const a=b.ph+hzAngle(b.r,t),p=[b.r*Math.cos(a),b.r*Math.sin(a),b.z];return {b,q:project(p)};});
- for(const o of gas)if(o.q.z<0)sprite(SPR.hot,o.q.x,o.q.y,o.b.s*k*.9,o.b.a);
- const hot=[];for(let i=0;i<=120;i++){const a=hzAngle(HOT_R,t-HOT_T*.7*(1-i/120));hot.push([HOT_R*Math.cos(a),HOT_R*Math.sin(a),0]);}
- const ha=hzAngle(HOT_R,t),hp=[HOT_R*Math.cos(ha),HOT_R*Math.sin(ha),0],hq=project(hp);
- const back=hq.z<0;if(back){fadedTrail(hot,'#fff1d6',2.2,true);sprite(SPR.white,hq.x,hq.y,1.3*k,.9);}
- const rs=5.2*k,rg=ctx.createRadialGradient(c.x,c.y,rs*.95,c.x,c.y,rs*1.6);rg.addColorStop(0,'rgba(255,190,120,.55)');rg.addColorStop(1,'rgba(255,150,80,0)');ctx.fillStyle=rg;ctx.beginPath();ctx.arc(c.x,c.y,rs*1.6,0,TAU);ctx.fill();
- ctx.fillStyle='#000';ctx.beginPath();ctx.arc(c.x,c.y,rs,0,TAU);ctx.fill();
- ctx.strokeStyle='rgba(255,220,180,.95)';ctx.lineWidth=Math.max(1.5,.3*k);ctx.beginPath();ctx.arc(c.x,c.y,rs,0,TAU);ctx.stroke();
- ctx.setLineDash([2,3]);ctx.strokeStyle='rgba(255,255,255,.45)';ctx.lineWidth=1;ctx.beginPath();ctx.arc(c.x,c.y,2*k,0,TAU);ctx.stroke();ctx.setLineDash([]);
- for(const o of gas)if(o.q.z>=0)sprite(SPR.hot,o.q.x,o.q.y,o.b.s*k*.9,o.b.a);
- if(!back){fadedTrail(hot,'#fff1d6',2.2,true);sprite(SPR.white,hq.x,hq.y,1.3*k,.95);}
- ctx.fillStyle='#fffaf0';ctx.beginPath();ctx.arc(hq.x,hq.y,Math.max(2,.25*k),0,TAU);ctx.fill();
- screenText('Flare hot spot · ≈113,000 km/s (0.38 c)',hq.x+10,hq.y-10,'#fff1d6',10,'600 ');
- screenText('Shadow + bright ring (what the EHT imaged)',c.x+rs+8,c.y-rs*.7,'rgba(255,215,175,.9)');
- screenText('Event horizon · 2 Rg ≈ 12.7 million km',c.x+rs+8,c.y-rs*.7+13,'rgba(230,230,230,.75)');
- screenText('Photon sphere · 3 Rg (light can orbit)',c.x+rs+8,c.y-rs*.7+26,'rgba(255,210,166,.75)');
- const sq=project([0,-13,0]);ctx.fillStyle='#ffd27a';ctx.beginPath();ctx.arc(sq.x,sq.y,Math.max(1.2,.11*k),0,TAU);ctx.fill();screenText('Our Sun, drawn to scale',sq.x+8,sq.y+4,'rgba(255,214,140,.9)');
- const px=5*k,x=26,y=H-114;ctx.strokeStyle='#cbb894';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(x,y);ctx.lineTo(x+px,y);ctx.moveTo(x,y-4);ctx.lineTo(x,y+4);ctx.moveTo(x+px,y-4);ctx.lineTo(x+px,y+4);ctx.stroke();ctx.font='9px '+FONT;ctx.fillStyle='#cbb894';ctx.fillText('5 Rg ≈ 32 million km ≈ 0.21 AU',x,y-8);}
-
+const g=ctx.createRadialGradient(c.x,c.y,0,c.x,c.y,18*k);g.addColorStop(0,'rgba(255,150,80,.16)');g.addColorStop(1,'rgba(255,150,80,0)');ctx.fillStyle=g;ctx.fillRect(0,0,W,H);
+screenPath(ring3(9.12),'#b0a898',.8,.4,true,[2,4]);textAt('Mercury’s orbit, if our Sun sat here (9 Rg)',[9.12*Math.cos(-.7),9.12*Math.sin(-.7),0],'rgba(200,192,178,.85)',9,6,4);
+screenPath(ring3(6),'#86d4cc',.9,.5,true,[4,4]);textAt('Innermost stable orbit · 6 Rg',[6*Math.cos(2.3),6*Math.sin(2.3),0],'rgba(150,220,210,.9)',9,-170,0);
+screenPath(ring3(3),'#ffd2a6',.8,.45,true,[1,3]);
+const gas=GAS.map(b=>{const a=b.ph+hzAngle(b.r,t),p=[b.r*Math.cos(a),b.r*Math.sin(a),b.z];return {b,q:project(p)};});
+for(const o of gas)if(o.q.z<0)sprite(SPR.hot,o.q.x,o.q.y,o.b.s*k*.9,o.b.a);
+const hot=[];for(let i=0;i<=120;i++){const a=hzAngle(HOT_R,t-HOT_T*.7*(1-i/120));hot.push([HOT_R*Math.cos(a),HOT_R*Math.sin(a),0]);}
+const ha=hzAngle(HOT_R,t),hp=[HOT_R*Math.cos(ha),HOT_R*Math.sin(ha),0],hq=project(hp);
+const back=hq.z<0;if(back){fadedTrail(hot,'#fff1d6',2.2,true);sprite(SPR.white,hq.x,hq.y,1.3*k,.9);}
+const rs=5.2*k,rg=ctx.createRadialGradient(c.x,c.y,rs*.95,c.x,c.y,rs*1.6);rg.addColorStop(0,'rgba(255,190,120,.55)');rg.addColorStop(1,'rgba(255,150,80,0)');ctx.fillStyle=rg;ctx.beginPath();ctx.arc(c.x,c.y,rs*1.6,0,TAU);ctx.fill();
+ctx.fillStyle='#000';ctx.beginPath();ctx.arc(c.x,c.y,rs,0,TAU);ctx.fill();
+ctx.strokeStyle='rgba(255,220,180,.95)';ctx.lineWidth=Math.max(1.5,.3*k);ctx.beginPath();ctx.arc(c.x,c.y,rs,0,TAU);ctx.stroke();
+ctx.setLineDash([2,3]);ctx.strokeStyle='rgba(255,255,255,.45)';ctx.lineWidth=1;ctx.beginPath();ctx.arc(c.x,c.y,2*k,0,TAU);ctx.stroke();ctx.setLineDash([]);
+for(const o of gas)if(o.q.z>=0)sprite(SPR.hot,o.q.x,o.q.y,o.b.s*k*.9,o.b.a);
+if(!back){fadedTrail(hot,'#fff1d6',2.2,true);sprite(SPR.white,hq.x,hq.y,1.3*k,.95);}
+ctx.fillStyle='#fffaf0';ctx.beginPath();ctx.arc(hq.x,hq.y,Math.max(2,.25*k),0,TAU);ctx.fill();
+screenText('Flare hot spot · ≈113,000 km/s (0.38 c)',hq.x+10,hq.y-10,'#fff1d6',10,'600 ');
+screenText('Shadow + bright ring (what the EHT imaged)',c.x+rs+8,c.y-rs*.7,'rgba(255,215,175,.9)');
+screenText('Event horizon · 2 Rg ≈ 12.7 million km',c.x+rs+8,c.y-rs*.7+13,'rgba(230,230,230,.75)');
+screenText('Photon sphere · 3 Rg (light can orbit)',c.x+rs+8,c.y-rs*.7+26,'rgba(255,210,166,.75)');
+const sq=project([0,-13,0]);ctx.fillStyle='#ffd27a';ctx.beginPath();ctx.arc(sq.x,sq.y,Math.max(1.2,.11*k),0,TAU);ctx.fill();screenText('Our Sun, drawn to scale',sq.x+8,sq.y+4,'rgba(255,214,140,.9)');
+const px=5*k,x=26,y=H-114;ctx.strokeStyle='#cbb894';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(x,y);ctx.lineTo(x+px,y);ctx.moveTo(x,y-4);ctx.lineTo(x,y+4);ctx.moveTo(x+px,y-4);ctx.lineTo(x+px,y+4);ctx.stroke();ctx.font='9px '+FONT;ctx.fillStyle='#cbb894';ctx.fillText('5 Rg ≈ 32 million km ≈ 0.21 AU',x,y-8);}
 function render(){fitProjection();bodyHits=[];ctx.setTransform(DPR,0,0,DPR,0,0);background();if(state.scene==='companions')drawCompanions();else if(state.scene==='galaxy')drawGalaxy();else if(state.scene==='sgr'){if(state.sgrZoom==='horizon')drawHorizon();else drawStars();}else{drawSky();drawLocal();}dirty=false;}
 function resize(){const box=$('stage').getBoundingClientRect();W=box.width;H=box.height;DPR=Math.min(window.devicePixelRatio||1,2);canvas.width=Math.round(W*DPR);canvas.height=Math.round(H*DPR);dirty=true;render();}
 function resetCamera(){const narrow=$('stage').getBoundingClientRect().width<500;
- if(state.scene==='companions'){
+if(state.scene==='companions'){
    const c=companion();
    if(state.craftFrame==='galaxy'){state.az=narrow?3.85:3.6;state.el=.4;}
    else if(c.group==='probe'){state.az=-.8;state.el=.5;}
-   else {const n=c.id==='hubble'&&state.craftFrame==='earth'?M.toGalactic([0,-Math.sin((28.5+23.43928)*D),Math.cos((28.5+23.43928)*D)]):M.toGalactic([0,0,1]);state.az=Math.atan2(n[1],n[0]);state.el=Math.asin(n[2]);if(c.group==='l2'){state.az+=.4;state.el-=.35;}}
- }
- else if(state.scene==='journey'){state.az=narrow?3.85:3.6;state.el=narrow?.62:.3;}
- else if(state.scene==='solar'){const n=M.toGalactic([0,0,1]);state.az=Math.atan2(n[1],n[0]);state.el=Math.asin(n[2]);}
- else if(state.scene==='galaxy'){state.az=-1.0;state.el=.55;}
- else if(state.sgrZoom==='horizon'){state.az=-1.2;state.el=.4;}
- else{state.az=-1.2;state.el=1.05;}
- state.zoom=1;document.querySelectorAll('[data-camera]').forEach(b=>b.setAttribute('aria-pressed','false'));dirty=true;}
+   else{const n=state.craftFrame==='ground'?C.SPIN_AXIS:(c.circ&&state.craftFrame==='earth'?C.normalOf(c):M.toGalactic([0,0,1]));state.az=Math.atan2(n[1],n[0]);state.el=clamp(Math.asin(n[2]),-1.45,1.45);if(c.group==='l2'){state.az+=.4;state.el-=.35;}}
+}
+else if(state.scene==='journey'){state.az=narrow?3.85:3.6;state.el=narrow?.62:.3;}
+else if(state.scene==='solar'){const n=M.toGalactic([0,0,1]);state.az=Math.atan2(n[1],n[0]);state.el=Math.asin(n[2]);}
+else if(state.scene==='galaxy'){state.az=-1.0;state.el=.55;}
+else if(state.sgrZoom==='horizon'){state.az=-1.2;state.el=.4;}
+else{state.az=-1.2;state.el=1.05;}
+state.zoom=1;document.querySelectorAll('[data-camera]').forEach(b=>b.setAttribute('aria-pressed','false'));dirty=true;}
 function updatePlay(){$('play').setAttribute('aria-label',state.paused?'Play animation':'Pause animation');$('play').setAttribute('aria-pressed',String(state.paused));$('playGlyph').textContent=state.paused?'▶':'Ⅱ';}
 function pause(value,notify=false){state.paused=value;updatePlay();if(notify)announce(value?'Animation paused.':'Animation playing.');dirty=true;}
 const clockKey=()=>state.scene==='companions'?'craftTime':state.scene==='galaxy'?'galTime':state.scene==='sgr'?(state.sgrZoom==='horizon'?'hzTime':'sgrTime'):'time';
 const rateKey=()=>state.scene==='companions'?'craftRate':state.scene==='galaxy'?'galRate':state.scene==='sgr'?(state.sgrZoom==='horizon'?'hzRate':'sgrRate'):state.scene==='solar'?'solarRate':'rate';
 function speedOptions(){
- if(state.scene==='companions'){const [values,unit,factor]=craftRates();const scale=unit==='yr'?1:factor;$('speed').innerHTML=values.map(v=>'<option value="'+(v*scale)+'">'+v+' '+unit+'/s</option>').join('');$('speed').value=String(state.craftRate);return;}
- const cfg=state.scene==='galaxy'?[[1,5,10,25,50],' Myr/s',10]:isHorizon()?[[1,2,5,10,30],' min/s',5]:state.scene==='sgr'?[[.25,.5,1,2,5],' yr/s',1]:[[.02,.05,.1,.25,.5,1,5,20],' yr/s',.1];
- $('speed').innerHTML=cfg[0].map(v=>'<option value="'+v+'">'+v+cfg[1]+(v===cfg[2]?' · default':'')+'</option>').join('');$('speed').value=String(state[rateKey()]);}
+if(state.scene==='companions'){
+  const [values,unit,factor]=craftRates();const scale=unit==='yr'?1:factor,sel=$('speed');
+  sel.innerHTML=values.map(v=>'<option value="'+(v*scale)+'">'+v+' '+unit+'/s</option>').join('');
+  // Choose the option closest to the current rate (avoids floating-point mismatches).
+  let best=0,bd=Infinity;[...sel.options].forEach((o,i)=>{const d=Math.abs(Math.log(Number(o.value)/state.craftRate));if(d<bd){bd=d;best=i;}});
+  sel.selectedIndex=best;state.craftRate=Number(sel.options[best].value);return;}
+const cfg=state.scene==='galaxy'?[[1,5,10,25,50],' Myr/s',10]:isHorizon()?[[1,2,5,10,30],' min/s',5]:state.scene==='sgr'?[[.25,.5,1,2,5],' yr/s',1]:[[.02,.05,.1,.25,.5,1,5,20],' yr/s',.1];
+$('speed').innerHTML=cfg[0].map(v=>'<option value="'+v+'">'+v+cfg[1]+(v===cfg[2]?' · default':'')+'</option>').join('');$('speed').value=String(state[rateKey()]);}
 function configTimeline(){if(state.scene==='companions'){configureCraftTime();return;}const tl=$('timeline'),cfg=state.scene==='galaxy'?['-600','460','.1','Millions of years from today','+10 Myr','Advance ten million years and pause']:isHorizon()?['0','240','.1','Minutes','+10 min','Advance ten minutes and pause']:state.scene==='sgr'?['1980','2045','.05','Calendar year','+1 year','Advance one year and pause']:['0','200','.01','Simulation time in Earth years','+1 year','Advance one Earth year and pause'];
- tl.min=cfg[0];tl.max=cfg[1];tl.step=cfg[2];tl.setAttribute('aria-label',cfg[3]);$('step').textContent=cfg[4];$('step').setAttribute('aria-label',cfg[5]);}
+tl.min=cfg[0];tl.max=cfg[1];tl.step=cfg[2];tl.setAttribute('aria-label',cfg[3]);$('step').textContent=cfg[4];$('step').setAttribute('aria-label',cfg[5]);}
 function updateFocus(){if(state.scene==='companions'){updateCraftFocus();return;}const sc=state.scene,galaxy=sc==='galaxy',p=P.find(x=>x.id===state.focus);
- if(sc==='sgr'){const hz=state.sgrZoom==='horizon';$('focusLabel').textContent='The heart of the Milky Way';$('focusName').textContent='Sagittarius A*';$('focusSub').textContent='Our galaxy’s central black hole';$('planetOrb').style.background='radial-gradient(circle,#000 36%,#ffc27a 44%,#a4522a 58%,#101b28 78%)';
+if(sc==='sgr'){const hz=state.sgrZoom==='horizon';$('focusLabel').textContent='The heart of the Milky Way';$('focusName').textContent='Sagittarius A*';$('focusSub').textContent='Our galaxy’s central black hole';$('planetOrb').style.background='radial-gradient(circle,#000 36%,#ffc27a 44%,#a4522a 58%,#101b28 78%)';
   $('factA').innerHTML=hz?'0.17 <small>AU</small>':'4.3M <small>Suns</small>';$('factALabel').textContent=hz?'horizon width':'mass';$('factB').innerHTML=hz?'≈41 <small>min</small>':'26,700 <small>ly</small>';$('factBLabel').textContent=hz?'hot-spot orbit':'from the Sun';
   $('focusCopy').textContent='From Earth, Sgr A* appears to drift about 6.4 milliarcseconds a year across the sky. The black hole is nearly still; that drift is our own orbital motion around it, seen in reverse.';}
- else{$('focusLabel').textContent=galaxy?'Our star’s galactic journey':'Planet in focus';$('focusName').textContent=galaxy?'The Sun':p.name;$('focusSub').textContent=galaxy?'Taking the planets along':p.id==='earth'?'Our home, on the move':'One of eight travelling worlds';$('planetOrb').style.background=galaxy?'radial-gradient(circle at 33% 28%,#fff6d3,#e9b456 43%,#8f5229 82%)':'radial-gradient(circle at 33% 28%,#e5fff6,'+p.color+' 28%,#28465c 65%,#101b28 85%)';$('factA').innerHTML=galaxy?'230 <small>Myr</small>':fmt(p.period,p.period<10?2:1)+' <small>yr</small>';$('factALabel').textContent=galaxy?'galactic orbit':'orbital period';$('factB').innerHTML=galaxy?'230 <small>km/s</small>':fmt(p.a,2)+' <small>AU</small>';$('factBLabel').textContent=galaxy?'adopted speed':'semimajor axis';
+else{$('focusLabel').textContent=galaxy?'Our star’s galactic journey':'Planet in focus';$('focusName').textContent=galaxy?'The Sun':p.name;$('focusSub').textContent=galaxy?'Taking the planets along':p.id==='earth'?'Our home, on the move':'One of eight travelling worlds';$('planetOrb').style.background=galaxy?'radial-gradient(circle at 33% 28%,#fff6d3,#e9b456 43%,#8f5229 82%)':'radial-gradient(circle at 33% 28%,#e5fff6,'+p.color+' 28%,#28465c 65%,#101b28 85%)';$('factA').innerHTML=galaxy?'230 <small>Myr</small>':fmt(p.period,p.period<10?2:1)+' <small>yr</small>';$('factALabel').textContent=galaxy?'galactic orbit':'orbital period';$('factB').innerHTML=galaxy?'230 <small>km/s</small>':fmt(p.a,2)+' <small>AU</small>';$('factBLabel').textContent=galaxy?'adopted speed':'semimajor axis';
   $('focusCopy').textContent=galaxy?'Time 0 is today. One galactic year ago, when the first dinosaurs appeared, the Sun was at the same angle around the centre but at a different height and distance. Blue stars show the inner galaxy lapping us.':sc==='solar'?p.name+' returns around the Sun. The same orbital motion also appears inside the travelling view.':'The highlighted trail combines '+p.name+"'s orbit with the Sun's onward motion around Sagittarius A*.";}
- document.querySelectorAll('[data-planet]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.planet===state.focus)));}
+document.querySelectorAll('[data-planet]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.planet===state.focus)));}
 function updateScale(){if(state.scene==='companions'){updateCraftScale();return;}const sc=state.scene,physical=state.scale==='physical',galaxy=sc==='galaxy',sgr=sc==='sgr',hz=isHorizon();document.querySelectorAll('[data-scale]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.scale===state.scale)));
- $('scaleTag').textContent=hz?'Gravitational radii · simplified':sgr?'Distances to scale · bodies enlarged':galaxy?(state.bob?'Galaxy schematic · height ×15':'Galaxy schematic · no vertical motion'):physical?'Physical distances · bodies enlarged':'Illustrative scale';$('scaleTag').classList.toggle('physical',(physical&&isLocal())||sgr);
- $('galaxyModelNote').innerHTML='Vertical cycle: <strong>'+M.VERTICAL_PERIOD_MYR+' Myr</strong>, crossing the midplane about every <strong>32 Myr</strong>. Today ≈20 pc north and rising'+(state.bob?'':' (off)')+'.<br>Radial wobble: ≈'+M.EPI_AMP_PC+' pc in and out every ≈'+M.EPI_PERIOD_MYR+' Myr'+(state.epi?'':' (off)')+'.<br>Arms turn as a pattern (≈'+PATTERN_MYR+' Myr), the bar faster (≈'+BAR_MYR+' Myr). Arms are density waves; stars drift through them.';
- $('scaleCopy').innerHTML=physical?'Orbital distances and solar travel share one AU scale. <strong>Body markers stay enlarged.</strong>':sc==='solar'?'Orbital spacing compressed to show all eight planets. <strong>Period ratios preserved.</strong>':'Orbit spacing compressed; forward travel reduced <strong>24.3×</strong> at Earth\'s scale. Period ratios preserved.';
- $('scaleFootnote').textContent=hz?'Simplified: non-spinning black hole, Newtonian orbit timing, no light bending or Doppler beaming drawn. 1 Rg = GM/c² ≈ 6.35 million km ≈ 0.042 AU. Earth’s orbit would be 23.6 Rg in radius, off this screen.':sgr?'S-star orbits approximate (after Gillessen et al. 2017 and GRAVITY 2018–2020; S4714 from Peißker et al. 2020, disputed), assuming 8.28 kpc. 1 AU ≈ 149.6 million km. The event horizon is only ≈0.17 AU across.':galaxy?'Separate million-year clock; time 0 = today. Schematic structure based on published maps. 1 scene unit ≈ 4,000 light-years.':'All body sizes enlarged. 1 AU ≈ 149.6 million km. The planes intersect at ≈60.2°. Sky objects shown in their true directions; rotate to find Andromeda and the Magellanic Clouds.';}
+$('scaleTag').textContent=hz?'Gravitational radii · simplified':sgr?'Distances to scale · bodies enlarged':galaxy?(state.bob?'Galaxy schematic · height ×15':'Galaxy schematic · no vertical motion'):physical?'Physical distances · bodies enlarged':'Illustrative scale';$('scaleTag').classList.toggle('physical',(physical&&isLocal())||sgr);
+$('galaxyModelNote').innerHTML='Vertical cycle: <strong>'+M.VERTICAL_PERIOD_MYR+' Myr</strong>, crossing the midplane about every <strong>32 Myr</strong>. Today ≈20 pc north and rising'+(state.bob?'':' (off)')+'.<br>Radial wobble: ≈'+M.EPI_AMP_PC+' pc in and out every ≈'+M.EPI_PERIOD_MYR+' Myr'+(state.epi?'':' (off)')+'.<br>Arms turn as a pattern (≈'+PATTERN_MYR+' Myr), the bar faster (≈'+BAR_MYR+' Myr). Arms are density waves; stars drift through them.';
+$('scaleCopy').innerHTML=physical?'Orbital distances and solar travel share one AU scale. <strong>Body markers stay enlarged.</strong>':sc==='solar'?'Orbital spacing compressed to show all eight planets. <strong>Period ratios preserved.</strong>':'Orbit spacing compressed; forward travel reduced <strong>24.3×</strong> at Earth\'s scale. Period ratios preserved.';
+$('scaleFootnote').textContent=hz?'Simplified: non-spinning black hole, Newtonian orbit timing, no light bending or Doppler beaming drawn. 1 Rg = GM/c² ≈ 6.35 million km ≈ 0.042 AU. Earth’s orbit would be 23.6 Rg in radius, off this screen.':sgr?'S-star orbits approximate (after Gillessen et al. 2017 and GRAVITY 2018–2020; S4714 from Peißker et al. 2020, disputed), assuming 8.28 kpc. 1 AU ≈ 149.6 million km. The event horizon is only ≈0.17 AU across.':galaxy?'Separate million-year clock; time 0 = today. Schematic structure based on published maps. 1 scene unit ≈ 4,000 light-years.':'All body sizes enlarged. 1 AU ≈ 149.6 million km. The planes intersect at ≈60.2°. Sky objects shown in their true directions; rotate to find Andromeda and the Magellanic Clouds.';}
 function updateTime(){if(state.scene==='companions'){updateCraftTime();return;}const sc=state.scene,tl=$('timeline'),hz=isHorizon();let t,txt;
- if(sc==='galaxy'){t=state.galTime;txt=Math.abs(t)<.05?'Today':t>0?'+'+fmt(t,1)+' Myr':fmt(-t,1)+' Myr ago';}
- else if(hz){t=state.hzTime;txt=fmt(t,1)+' min';}
- else if(sc==='sgr'){t=state.sgrTime;txt='Year '+fmt(t,1);}
- else{t=state.time;txt=fmt(t,2)+' years';}
- $('timeValue').textContent=txt;const base=sc==='galaxy'?460:hz?240:sc==='sgr'?2045:200;let max=Math.max(base,Number(tl.max)||base);if(t>max)max=sc==='sgr'&&!hz?Math.ceil(t/10)*10:Math.ceil(t/base)*base;tl.max=String(max);if(document.activeElement!==tl)tl.value=String(t);tl.setAttribute('aria-valuetext',txt);
- if(sc==='galaxy'){$('distanceValue').textContent=fmt(t/M.GALACTIC_PERIOD_MYR,2);$('distanceUnit').textContent='laps';}
- else if(hz){$('distanceValue').textContent='≈113,000';$('distanceUnit').textContent='km/s';$('distanceNote').textContent='≈38% of light speed, one lap every ≈41 minutes at ≈7 Rg. Mercury, a little farther from our far lighter Sun, takes 88 days.';}
- else if(sc==='sgr'){let best=null;for(const s of S_STARS){const o=starSpeed(s,starAt(s,t));if(!best||o.v>best.v)best={s,...o};}$('distanceValue').textContent=fmt(best.v,0);$('distanceUnit').textContent='km/s';$('distanceNote').textContent=best.s.name+(best.s.cand?' (candidate)':'')+' · '+fmt(best.v/2997.92458,1)+'% of light speed · '+fmt(best.r,0)+' AU from the black hole. Our Sun: 230 km/s.';}
- else{const d=t*M.SUN_AU_PER_YEAR;$('distanceValue').textContent=fmt(d,d<1000?2:0);$('distanceUnit').textContent='AU';const v=earthVel(t);
+if(sc==='galaxy'){t=state.galTime;txt=Math.abs(t)<.05?'Today':t>0?'+'+fmt(t,1)+' Myr':fmt(-t,1)+' Myr ago';}
+else if(hz){t=state.hzTime;txt=fmt(t,1)+' min';}
+else if(sc==='sgr'){t=state.sgrTime;txt='Year '+fmt(t,1);}
+else{t=state.time;txt=fmt(t,2)+' years';}
+$('timeValue').textContent=txt;const base=sc==='galaxy'?460:hz?240:sc==='sgr'?2045:200;let max=Math.max(base,Number(tl.max)||base);if(t>max)max=sc==='sgr'&&!hz?Math.ceil(t/10)*10:Math.ceil(t/base)*base;tl.max=String(max);if(document.activeElement!==tl)tl.value=String(t);tl.setAttribute('aria-valuetext',txt);
+if(sc==='galaxy'){$('distanceValue').textContent=fmt(t/M.GALACTIC_PERIOD_MYR,2);$('distanceUnit').textContent='laps';}
+else if(hz){$('distanceValue').textContent='≈113,000';$('distanceUnit').textContent='km/s';$('distanceNote').textContent='≈38% of light speed, one lap every ≈41 minutes at ≈7 Rg. Mercury, a little farther from our far lighter Sun, takes 88 days.';}
+else if(sc==='sgr'){let best=null;for(const s of S_STARS){const o=starSpeed(s,starAt(s,t));if(!best||o.v>best.v)best={s,...o};}$('distanceValue').textContent=fmt(best.v,0);$('distanceUnit').textContent='km/s';$('distanceNote').textContent=best.s.name+(best.s.cand?' (candidate)':'')+' · '+fmt(best.v/2997.92458,1)+'% of light speed · '+fmt(best.r,0)+' AU from the black hole. Our Sun: 230 km/s.';}
+else{const d=t*M.SUN_AU_PER_YEAR;$('distanceValue').textContent=fmt(d,d<1000?2:0);$('distanceUnit').textContent='AU';const v=earthVel(t);
   if(sc==='journey'){const gal=Math.hypot(v[0],v[1]+M.SUN_AU_PER_YEAR,v[2])*KMS;$('distanceNote').textContent='Physical distance since model time zero, at 230 km/s. Earth right now: '+fmt(gal,1)+' km/s in this frame. Its tilted orbit adds or subtracts up to ~15 km/s.';}
   else $('distanceNote').textContent='Measured from the Sun, Earth isn’t drifting at all. Its orbital speed right now is '+fmt(Math.hypot(...v)*KMS,2)+' km/s: fastest at perihelion, slowest at aphelion.';}}
 const SCENES={
- companions:{title:'Our travelling companions.',caption:'',summary:'Nested orbits and escaping spacecraft in Earth, Sun, and Galactic reference frames.',say:'Moon and spacecraft explorer. Choose a companion and a reference frame.'},
- journey:{title:'Eight planets. One moving star.',caption:'Trails in a local Galactic frame. Camera follows the Sun; Sagittarius A* marks the galactic centre. Rotate to spot Andromeda and the Magellanic Clouds.',summary:'Planetary orbits plus the Sun’s translation, with the Milky Way band, Sagittarius A*, Andromeda and the Magellanic Clouds in the background.',say:'Galactic trajectories, with Sagittarius A* in the background.'},
- solar:{title:'The familiar view from our star.',caption:'Positions and trails measured relative to the Sun.',summary:'Planets and their nearly elliptical trails measured relative to the Sun.',say:'Sun-relative view. Planetary periods are unchanged.'},
- galaxy:{title:'One galactic year. A much longer journey.',caption:'Our place among the Milky Way’s bar and spiral arms. Time 0 = today.',summary:'A schematic Milky Way with a central bar and named spiral arms. The Sun circles Sagittarius A*, wobbling up and down and in and out, while inner stars lap it.',say:'Galaxy overview, with a million-year clock. Time zero is today.'},
- sgr:{title:'Sagittarius A*',caption:'',summary:'Stars and hot gas orbiting the supermassive black hole Sagittarius A*, with live speeds.',say:''}};
+companions:{title:'Our travelling companions.',caption:'',summary:'Nested orbits and escaping spacecraft in Ground, Earth, Sun and Galactic reference frames.',say:'Moon and spacecraft explorer. Choose a companion and a reference frame.'},
+journey:{title:'Eight planets. One moving star.',caption:'Trails in a local Galactic frame. Camera follows the Sun; Sagittarius A* marks the galactic centre. Rotate to spot Andromeda and the Magellanic Clouds.',summary:'Planetary orbits plus the Sun’s translation, with the Milky Way band, Sagittarius A*, Andromeda and the Magellanic Clouds in the background.',say:'Galactic trajectories, with Sagittarius A* in the background.'},
+solar:{title:'The familiar view from our star.',caption:'Positions and trails measured relative to the Sun.',summary:'Planets and their nearly elliptical trails measured relative to the Sun.',say:'Sun-relative view. Planetary periods are unchanged.'},
+galaxy:{title:'One galactic year. A much longer journey.',caption:'Our place among the Milky Way’s bar and spiral arms. Time 0 = today.',summary:'A schematic Milky Way with a central bar and named spiral arms. The Sun circles Sagittarius A*, wobbling up and down and in and out, while inner stars lap it.',say:'Galaxy overview, with a million-year clock. Time zero is today.'},
+sgr:{title:'Sagittarius A*',caption:'',summary:'Stars and hot gas orbiting the supermassive black hole Sagittarius A*, with live speeds.',say:''}};
 function hintFor(sc){const head='<strong>Drag to rotate · pinch or scroll to zoom</strong><br>';if(sc==='galaxy')return head+'Gold: the Sun’s path · blue: other stars lapping at their own pace · rings: moments in Earth’s history';if(sc==='sgr')return head+(state.sgrZoom==='horizon'?'White blob: a flare hot spot · gas closer in orbits faster':'Labels show each star’s live speed · ring: S2’s closest point');const n=P.find(p=>p.id===state.focus).name;return head+'Bright trail: '+n+(sc==='journey'?' · gold line: the Sun':' · faint lines: orbit guides');}
 function setScene(scene){state.scene=scene;sceneStart=performance.now();const local=isLocal(),galaxy=scene==='galaxy',sgr=scene==='sgr',S=SCENES[scene];
- document.querySelectorAll('[data-scene]').forEach(b=>{const active=b.dataset.scene===scene;b.setAttribute('aria-selected',String(active));b.tabIndex=active?0:-1;});
- $('explorer-panel').setAttribute('aria-labelledby','tab-'+scene);
- $('localControls').hidden=!local;$('scaleControls').hidden=!local;$('galaxyControls').hidden=!galaxy;$('sgrControls').hidden=!sgr;$('planetLegend').hidden=!local;
- const isCraft=scene==='companions';
- for(const id of ['companionBanner','companionControls','companionNotes','craftLegend','motionCard','frameBadge'])$(id).hidden=!isCraft;
- document.querySelector('.sidebar').classList.toggle('companion-sidebar',isCraft);
- if(isCraft){applyCraft();announce(S.say);return;}
- $('canvasSummary').textContent=S.summary;
- if(sgr){applySgrZoom(state.sgrZoom);return;}
- $('sceneTitle').textContent=S.title;$('sceneCaption').textContent=S.caption;
- $('distanceLabel').textContent=galaxy?'Galactic laps from today':'Sun’s forward travel';
- $('distanceNote').textContent=galaxy?'Using a 230-million-year galactic period. Drag the timeline left to go back in time.':'';
- configTimeline();$('viewHint').innerHTML=hintFor(scene);resetCamera();speedOptions();updateFocus();updateScale();updateTime();announce(S.say);dirty=true;}
+document.querySelectorAll('[data-scene]').forEach(b=>{const active=b.dataset.scene===scene;b.setAttribute('aria-selected',String(active));b.tabIndex=active?0:-1;});
+$('explorer-panel').setAttribute('aria-labelledby','tab-'+scene);
+$('localControls').hidden=!local;$('scaleControls').hidden=!local;$('galaxyControls').hidden=!galaxy;$('sgrControls').hidden=!sgr;$('planetLegend').hidden=!local;
+const isCraft=scene==='companions';
+for(const id of ['companionBanner','companionControls','companionNotes','craftLegend','motionCard','frameBadge'])$(id).hidden=!isCraft;
+document.querySelector('.sidebar').classList.toggle('companion-sidebar',isCraft);
+if(isCraft){applyCraft();announce(S.say);return;}
+$('canvasSummary').textContent=S.summary;
+if(sgr){applySgrZoom(state.sgrZoom);return;}
+$('sceneTitle').textContent=S.title;$('sceneCaption').textContent=S.caption;
+$('distanceLabel').textContent=galaxy?'Galactic laps from today':'Sun’s forward travel';
+$('distanceNote').textContent=galaxy?'Using a 230-million-year galactic period. Drag the timeline left to go back in time.':'';
+configTimeline();$('viewHint').innerHTML=hintFor(scene);resetCamera();speedOptions();updateFocus();updateScale();updateTime();announce(S.say);dirty=true;}
 function applySgrZoom(z){state.sgrZoom=z;sceneStart=performance.now();const Z=SGR_ZOOM[z];
- document.querySelectorAll('[data-sgrzoom]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.sgrzoom===z)));
- $('sceneTitle').textContent=Z.title;$('sceneCaption').textContent=Z.caption;$('sgrInfo').innerHTML=Z.info;
- $('distanceLabel').textContent=z==='horizon'?'Hot-spot speed':'Fastest star right now';$('starOnly').hidden=z==='horizon';
- configTimeline();$('viewHint').innerHTML=hintFor('sgr');resetCamera();speedOptions();updateFocus();updateScale();updateTime();announce(Z.say);dirty=true;}
+document.querySelectorAll('[data-sgrzoom]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.sgrzoom===z)));
+$('sceneTitle').textContent=Z.title;$('sceneCaption').textContent=Z.caption;$('sgrInfo').innerHTML=Z.info;
+$('distanceLabel').textContent=z==='horizon'?'Hot-spot speed':'Fastest star right now';$('starOnly').hidden=z==='horizon';
+configTimeline();$('viewHint').innerHTML=hintFor('sgr');resetCamera();speedOptions();updateFocus();updateScale();updateTime();announce(Z.say);dirty=true;}
 function setFocus(id){if(id==='sun')return;state.focus=id;if(state.set==='inner'&&!P.slice(0,4).some(p=>p.id===id)){state.set='all';$('planetSet').value='all';}updateFocus();$('viewHint').innerHTML=hintFor(state.scene);dirty=true;announce(P.find(p=>p.id===id).name+' highlighted.');}
-
 /* ---------- Perspective counters & lifetime calculator ---------- */
 function updatePerspectives(now){const s=(now-pageStart)/1000,set=(id,v)=>{$(id).textContent=fmt(v,0);};
- set('liveKm',s*SPEEDS.gal);$('liveEq').textContent=fmt(s*SPEEDS.gal/40075,1);
- set('pSpin',s*SPEEDS.spin);set('pOrbit',s*SPEEDS.orbit);set('pGal',s*SPEEDS.gal);set('pCmb',s*SPEEDS.cmb);set('pMw',s*SPEEDS.mw);set('pAnd',s*SPEEDS.and);set('pS2',s*SPEEDS.s2);set('pFlare',s*SPEEDS.flare);
- const L=s*SPEEDS.light;set('pLight',L);set('pMoon',Math.floor(L/768800));
- const h=Math.floor(s/3600),m=Math.floor(s/60)%60,sec=Math.floor(s%60);
- $('elapsed').textContent='You opened this page '+(h?h+' h ':'')+(h||m?m+' min ':'')+sec+' s ago. Every counter above covers that same stretch of time.';}
+set('liveKm',s*SPEEDS.gal);$('liveEq').textContent=fmt(s*SPEEDS.gal/40075,1);
+set('pSpin',s*SPEEDS.spin);set('pOrbit',s*SPEEDS.orbit);set('pGal',s*SPEEDS.gal);set('pIss',s*SPEEDS.iss);set('pPsp',s*SPEEDS.psp);set('pV1',s*SPEEDS.v1);set('pCmb',s*SPEEDS.cmb);set('pMw',s*SPEEDS.mw);set('pAnd',s*SPEEDS.and);set('pS2',s*SPEEDS.s2);set('pFlare',s*SPEEDS.flare);
+const L=s*SPEEDS.light;set('pLight',L);set('pMoon',Math.floor(L/768800));
+const h=Math.floor(s/3600),m=Math.floor(s/60)%60,sec=Math.floor(s%60);
+$('elapsed').textContent='You opened this page '+(h?h+' h ':'')+(h||m?m+' min ':'')+sec+' s ago. Every counter above covers that same stretch of time.';}
 function updateLifetime(){const y=Number($('age').value),ids=['lLaps','lSunKm','lGalKm','lAU','lFrac','lDeg','lCmb','lLy','lWait'];
- if(!(y>0)||y>200){ids.forEach(id=>$(id).textContent='—');return;}
- const sec=y*M.SEC_PER_YEAR,g=sec*SPEEDS.gal,f=y/(M.GALACTIC_PERIOD_MYR*1e6);
- $('lLaps').textContent=fmt(y,y%1?1:0);$('lSunKm').textContent=bigNum(sec*SPEEDS.orbit);
- $('lGalKm').textContent=bigNum(g);$('lAU').textContent=fmt(y*M.SUN_AU_PER_YEAR,0);
- $('lFrac').textContent=tiny(f*100)+'%';$('lDeg').textContent=tiny(f*360);
- $('lCmb').textContent=bigNum(sec*SPEEDS.cmb);$('lLy').textContent=tiny(g/9.4607e12);
- $('lWait').textContent=fmt(Math.round(1/f),0);}
+if(!(y>0)||y>200){ids.forEach(id=>$(id).textContent='—');return;}
+const sec=y*M.SEC_PER_YEAR,g=sec*SPEEDS.gal,f=y/(M.GALACTIC_PERIOD_MYR*1e6);
+$('lLaps').textContent=fmt(y,y%1?1:0);$('lSunKm').textContent=bigNum(sec*SPEEDS.orbit);
+$('lGalKm').textContent=bigNum(g);$('lAU').textContent=fmt(y*M.SUN_AU_PER_YEAR,0);
+$('lFrac').textContent=tiny(f*100)+'%';$('lDeg').textContent=tiny(f*360);
+$('lCmb').textContent=bigNum(sec*SPEEDS.cmb);$('lLy').textContent=tiny(g/9.4607e12);
+$('lWait').textContent=fmt(Math.round(1/f),0);}
 $('age').addEventListener('input',updateLifetime);updateLifetime();
-
 /* ---------- Controls ---------- */
 for(const c of C.craft){const b=document.createElement('button');b.className='craft-chip';b.dataset.craft=c.id;b.style.setProperty('--craft-color',c.color);b.textContent=c.name;b.setAttribute('aria-pressed',String(c.id===state.craft));b.addEventListener('click',()=>setCraft(c.id));$('craftLegend').appendChild(b);}
 $('craftSelect').addEventListener('change',()=>setCraft($('craftSelect').value));
 document.querySelectorAll('[data-craft-frame]').forEach(b=>b.addEventListener('click',()=>setCraftFrame(b.dataset.craftFrame)));
 document.querySelectorAll('[data-craft-scale]').forEach(b=>b.addEventListener('click',()=>{state.craftScale=b.dataset.craftScale;updateCraftScale();state.zoom=1;dirty=true;announce(b.textContent+' selected.');}));
 for(const key of ['craftTrails','craftGuides','craftLabels'])$(key).addEventListener('change',()=>{state[key]=$(key).checked;dirty=true;});
-document.querySelectorAll('[data-demo]').forEach(b=>b.addEventListener('click',()=>{setScene('companions');setCraft(b.dataset.demo);$('explorer-panel').scrollIntoView({behavior:reduceMotion?'instant':'smooth',block:'start'});}));
-
+document.querySelectorAll('[data-demo]').forEach(b=>b.addEventListener('click',()=>{setScene('companions');setCraft(b.dataset.demo);if(b.dataset.frame)setCraftFrame(b.dataset.frame);pause(false);$('explorer-panel').scrollIntoView({behavior:reduceMotion?'instant':'smooth',block:'start'});}));
 for(const p of P){const b=document.createElement('button');b.className='planet-button';b.dataset.planet=p.id;b.style.setProperty('--planet-color',p.color);b.textContent=p.name;b.setAttribute('aria-pressed',String(p.id===state.focus));b.addEventListener('click',()=>setFocus(p.id));$('planetLegend').appendChild(b);}
 document.querySelectorAll('[data-scene]').forEach(b=>b.addEventListener('click',()=>setScene(b.dataset.scene)));
 document.querySelectorAll('[data-sgrzoom]').forEach(b=>b.addEventListener('click',()=>applySgrZoom(b.dataset.sgrzoom)));
@@ -1140,14 +1216,14 @@ if('IntersectionObserver'in window)new IntersectionObserver(entries=>{visible=en
 if('ResizeObserver'in window)new ResizeObserver(resize).observe($('stage'));else window.addEventListener('resize',resize);
 document.querySelector('a[href="#science"]').addEventListener('click',()=>{$('science').open=true;});
 function loop(now){const dt=lastFrame?Math.min((now-lastFrame)/1000,.1):0;lastFrame=now;
- const e=Math.min(1,(now-sceneStart)/1800),ease=e*e*(3-2*e); // gentle ease-in after opening a view
- if(!state.paused&&!document.hidden&&visible){state[clockKey()]+=dt*state[rateKey()]*ease;dirty=true;}
- if(state.scene==='journey'&&state.sgr&&visible)dirty=true;
- const cap=state.scene==='galaxy'?30:60;
- if(dirty&&visible&&now-lastDraw>1000/cap-1){render();lastDraw=now;}
- if(now-lastUI>100){updateTime();updatePerspectives(now);lastUI=now;}
- requestAnimationFrame(loop);}
-setScene('companions');updatePlay();resize();if(reduceMotion)announce('Animation starts paused to match your reduced-motion preference.');requestAnimationFrame(loop);
+const e=Math.min(1,(now-sceneStart)/1800),ease=e*e*(3-2*e); // gentle ease-in after opening a view
+if(!state.paused&&!document.hidden&&visible){state[clockKey()]+=dt*state[rateKey()]*ease;dirty=true;}
+if((state.scene==='journey'||(state.scene==='companions'&&state.craftFrame==='galaxy'))&&state.sgr&&visible)dirty=true;
+const cap=state.scene==='galaxy'?30:60;
+if(dirty&&visible&&now-lastDraw>1000/cap-1){render();lastDraw=now;}
+if(now-lastUI>100){updateTime();updatePerspectives(now);lastUI=now;}
+requestAnimationFrame(loop);}
+setScene('journey');updatePlay();resize();if(reduceMotion)announce('Animation starts paused to match your reduced-motion preference.');requestAnimationFrame(loop);
 window.OrbitExplorer=Object.freeze({getState:()=>({...state}),getProjection:()=>({...projection}),setScene,setCraft,setCraftFrame,render,model:M,companions:C,sStars:S_STARS});
 })();
 </script>
